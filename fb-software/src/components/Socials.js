@@ -37,7 +37,7 @@ const Wrapper = styled.div`
     svg {
       height: 1.6rem;
       margin-left: 5px;
-      color: var(--clr-grey-3);
+      color: var(--clr-accent-3);
       transition-duration: 250ms;
     }
 

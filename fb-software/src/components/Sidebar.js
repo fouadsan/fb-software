@@ -79,7 +79,7 @@ const SidebarContainer = styled.div`
     font-weight: bold;
     text-transform: capitalize;
     padding: 1rem 1.5rem;
-    color: var(--clr-grey-3);
+    color: var(--clr-accent-3);
     transition: var(--transition);
     letter-spacing: var(--spacing);
   }
@@ -87,19 +87,19 @@ const SidebarContainer = styled.div`
   .links a:hover {
     padding: 1rem 1.5rem;
     padding-left: 2rem;
-    background: var(--clr-grey-10);
-    color: var(--clr-grey-2);
+    background: var(--clr-accent-10);
+    color: var(--clr-accent-2);
   }
 
   .links a svg {
     font-size: 1.5rem;
-    color: var(--clr-grey-5);
+    color: var(--clr-accent-5);
     margin-right: 1rem;
     transition: var(--transition);
   }
 
   .links a:hover svg {
-    color: var(--clr-grey-4);
+    color: var(--clr-accent-4);
   }
 
   .sidebar {
