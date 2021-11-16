@@ -35,6 +35,7 @@ const Wrapper = styled.div`
     border-color: transparent;
     margin: 0 0.5rem;
     padding: 0.375rem 0.75rem;
+    font-family: inherit;
     font-weight: 600;
     color: var(--clr-primary-1);
     box-shadow: none;

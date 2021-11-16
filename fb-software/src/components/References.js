@@ -37,7 +37,7 @@ function References() {
   }
   if (projectItems.length) {
     return (
-      <Wrapper className="section">
+      <Wrapper className="page-100">
         <div className="title">
           <h2>Some References</h2>
           <div className="underline"></div>
@@ -51,8 +51,8 @@ function References() {
   }
 }
 
-const Wrapper = styled.section`
-  background: var(--clr-accent-10);
+const Wrapper = styled.div`
+  background: var(--clr-primary-10);
   
   }
 
