@@ -5,28 +5,23 @@ import { useGlobalContext } from "../context";
 
 const Categories = ({ filterItems }) => {
   const { categories } = useGlobalContext();
-  console.log(categories);
 
-  if (categories) {
-    return (
-      <Wrapper className="btn-container">
-        {categories.map((category, index) => {
-          return (
-            <button
-              type="button"
-              key={index}
-              className="btn filter-btn"
-              onClick={() => filterItems(category)}
-            >
-              {category}
-            </button>
-          );
-        })}
-      </Wrapper>
-    );
-  } else {
-    return null;
-  }
+  return (
+    <Wrapper className="btn-container">
+      {categories.map((category, index) => {
+        return (
+          <button
+            type="button"
+            key={index}
+            className="btn filter-btn"
+            onClick={() => filterItems(category)}
+          >
+            {category}
+          </button>
+        );
+      })}
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.div`
