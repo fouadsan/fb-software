@@ -35,6 +35,11 @@ function References() {
   if (error) {
     return <Error />;
   }
+  if (projects.length < 1) {
+    return (
+      <h5 className="text-center">Sorry, no projects matched your search</h5>
+    );
+  }
   if (projectItems.length) {
     return (
       <Wrapper className="page-100">
@@ -53,8 +58,6 @@ function References() {
 
 const Wrapper = styled.div`
   background: var(--clr-primary-10);
-  
-  }
 
   @media (min-width: 576px) {
   }

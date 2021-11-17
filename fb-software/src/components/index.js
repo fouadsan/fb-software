@@ -4,16 +4,6 @@ import Hero from "./Hero";
 import References from "./References";
 import Error from "./Error";
 import Loading from "./Loading";
-import Categories from "./Categories";
-import Projects from "./Projects";
+import Services from "./Services";
 
-export {
-  Navbar,
-  Sidebar,
-  Hero,
-  References,
-  Loading,
-  Error,
-  Categories,
-  Projects,
-};
+export { Navbar, Sidebar, Hero, References, Loading, Error, Services };

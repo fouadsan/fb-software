@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { FaSearch } from "react-icons/fa";
 
 function Projects({ items }) {
   return (
@@ -8,13 +9,20 @@ function Projects({ items }) {
         const { id, name, image, price } = menuItem;
         return (
           <article key={id} className="menu-item">
-            <img src={image} alt={name} className="photo" />
+            <div className="project-imgs">
+              <img src={image} alt={name} className="thumb" />
+              <a href="/" className="link">
+                <FaSearch />
+              </a>
+            </div>
             <div className="item-info">
               <header>
                 <h4>{name}</h4>
                 <h4 className="price">mobile</h4>
               </header>
-              <p className="item-text">{name}</p>
+              <p className="item-desc">
+                miloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremilorem
+              </p>
             </div>
           </article>
         );
@@ -32,15 +40,58 @@ const Wrapper = styled.div`
     display: grid;
     gap: 1rem 2rem;
     width: 100%;
+    max-width: 25rem;
+    overflow: hidden;
   }
-  .photo {
-    object-fit: cover;
-    height: 200px;
-    width: 100%;
+
+  .project-imgs {
+    position: relative;
     border: 0.25rem solid var(--clr-primary-3);
     border-radius: var(--radius);
-    display: block;
+
+    &:hover {
+      .thumb {
+        opacity: 0.5;
+      }
+      .link {
+        opacity: 1;
+      }
+    }
   }
+
+  .thumb {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    transition: var(--transition);
+  }
+
+  .link {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--clr-primary-5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    transition: var(--transition);
+    opacity: 0;
+    cursor: pointer;
+    svg {
+      font-size: 1.25rem;
+      color: var(--clr-white);
+    }
+  }
+
+  .thumb:hover .link {
+    opacity: 1;
+  }
+
   .item-info header {
     display: flex;
     justify-content: space-between;
@@ -53,9 +104,16 @@ const Wrapper = styled.div`
   .price {
     color: var(--clr-gold);
   }
-  .item-text {
+  .item-desc {
+    display: -webkit-box;
+    width: 320px;
+    word-wrap: break-word;
     margin-bottom: 0;
     padding-top: 1rem;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   @media screen and (min-width: 768px) {
@@ -64,16 +122,28 @@ const Wrapper = styled.div`
       gap: 0 1.25rem;
       max-width: 40rem;
     }
-    .photo {
+
+    .thumb {
       height: 175px;
     }
+
+    .item-desc {
+      width: 300px;
+    }
   }
+
   @media screen and (min-width: 1200px) {
     width: 95vw;
     grid-template-columns: 1fr 1fr;
 
-    .photo {
+    .thumb {
       height: 150px;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .item-desc {
+      width: 380px;
     }
   }
 `;

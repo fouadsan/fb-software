@@ -1,10 +1,11 @@
 import React from "react";
-import { Hero, References } from "./components";
+import { Hero, References, Services } from "./components";
 const HomePage = () => {
   return (
     <main>
       <Hero />
       <References />
+      <Services />
     </main>
   );
 };
