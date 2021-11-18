@@ -1,13 +1,21 @@
 import React from "react";
-import { Hero, References, Services } from "./components";
+import styled from "styled-components";
+
+import { Hero, References, Services, Technologies } from "./components";
+
 const HomePage = () => {
   return (
-    <main>
+    <Wrapper>
       <Hero />
       <References />
       <Services />
-    </main>
+      <Technologies />
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.main`
+  overflow-x: hidden;
+`;
 
 export default HomePage;

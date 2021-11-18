@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+
 import { services } from "../constants";
+
 const Services = () => {
   return (
     <Wrapper>
@@ -13,10 +15,16 @@ const Services = () => {
           {services.map((service) => {
             const { id, icon, title, text } = service;
             return (
-              <article className="service" key={id}>
-                <span className="icon">{icon}</span>
-                <h4>{title}</h4>
-                <p>{text}</p>
+              <article className="single-service" key={id}>
+                <div className="service-thumb">
+                  <div className="service-icon">
+                    <img src={icon} alt="" />
+                  </div>
+                </div>
+                <div className="service-content">
+                  <h4>{title} development</h4>
+                  <p>{text}</p>
+                </div>
               </article>
             );
           })}
@@ -34,42 +42,62 @@ const Wrapper = styled.section`
   }
 
   .services-center {
-    margin-top: 3rem;
+    margin-top: 2rem;
     display: grid;
     gap: 2.5rem;
   }
 
-  .service {
-    background: var(--clr-accent-7);
-    text-align: center;
-    padding: 2.5rem 2rem;
-    border-radius: var(--radius);
+  .single-service {
+    background-color: var(--clr-primary-9);
+    padding: 70px 25px 65px 25px;
+    border: 0.25rem solid var(--clr-primary-3);
+    border-radius: var(radius);
+    margin-bottom: 20px;
+    cursor: pointer;
+    box-shadow: var(--dark-shadow);
+    transition: var(--transition);
+
+    &:hover {
+      background-color: var(--clr-accent-8);
+    }
+  }
+
+  .service-thumb {
+    height: 100px;
+    width: 120px;
+    background-repeat: no-repeat;
+    margin: auto auto 1rem auto;
+  }
+
+  .service-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .service-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h4 {
+      font-weight: 600;
+      margin-top: 43px;
+      margin-bottom: 22px;
+    }
+
     p {
-      color: var(--clr-accent-2);
+      font-size: 1rem;
+      margin-bottom: 0;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      text-align: justify;
+      text-justify: inter-word;
     }
   }
 
-  span {
-    width: 4rem;
-    height: 4rem;
-    display: grid;
-    margin: 0 auto;
-    place-items: center;
-    margin-bottom: 1rem;
-    border-radius: 50%;
-    background: var(--clr-accent-10);
-    color: var(--clr-accent-1);
-    svg {
-      font-size: 2rem;
-    }
-  }
-
-  @media (min-width: 992px) {
-    .header {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-  }
   @media (min-width: 576px) {
     .services-center {
       grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));

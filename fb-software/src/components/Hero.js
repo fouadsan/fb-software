@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { FaEnvelope, FaPhone } from "react-icons/fa";
 
-import testhero from "../assets/test-hero.jpg";
+import heroIcon from "../assets/hero-dev.jpg";
+
 // import { services } from "../constants";
 
 // const heroType = (word) => {
@@ -56,7 +57,7 @@ const Hero = () => {
       </article>
 
       <article className="img-container">
-        <img src={testhero} alt="nice table" className="main-img" />
+        <img src={heroIcon} alt="nice table" className="main-img" />
       </article>
     </Wrapper>
   );
@@ -95,14 +96,16 @@ const Wrapper = styled.section`
     .img-container {
       display: block;
       position: relative;
-      transition: transform 250ms ease-in;
+      border-radius: 50%;
+      cursor: pointer;
+      animation: roll 10s infinite;
     }
 
     .main-img {
       width: 100%;
-      height: 450px;
+      height: 470px;
       position: relative;
-      border-radius: var(--radius);
+      border-radius: 50%;
       display: block;
       object-fit: cover;
     }
