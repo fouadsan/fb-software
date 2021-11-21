@@ -3,7 +3,7 @@ import { FaTimes } from "react-icons/fa";
 import styled from "styled-components";
 
 import logo from "../assets/logo.svg";
-import { links } from "../constants";
+import { LINKS } from "../utils/constants";
 import { useGlobalContext } from "../context";
 import Socials from "./Socials";
 
@@ -22,7 +22,7 @@ const Sidebar = () => {
           </button>
         </div>
         <ul className="links">
-          {links.map(({ id, text, url, icon }) => {
+          {LINKS.map(({ id, text, url, icon }) => {
             return (
               <li key={id}>
                 <a href={url} onClick={closeSidebar}>

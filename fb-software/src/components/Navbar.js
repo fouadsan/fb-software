@@ -1,17 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { FaBars } from "react-icons/fa";
 
 import logo from "../assets/logo.svg";
-import { links } from "../constants";
+import { LINKS } from "../utils/constants";
 import { useGlobalContext } from "../context";
 import Socials from "./Socials";
 
 const Nav = () => {
   const { openSidebar } = useGlobalContext();
+  const [show, setShow] = useState(false);
+
+  const handleShow = () => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 100) {
+        setShow(true);
+      } else setShow(false);
+    });
+  };
+
+  useEffect(() => {
+    handleShow();
+    return () => {
+      window.removeEventListener("scroll", handleShow);
+    };
+  }, []);
 
   return (
-    <NavContainer>
+    <NavContainer show={show}>
       <div className="nav-center">
         <div className="nav-header">
           <a href="/">
@@ -22,7 +38,7 @@ const Nav = () => {
           </button>
         </div>
         <ul className="nav-links">
-          {links.map((link) => {
+          {LINKS.map((link) => {
             const { id, text, url } = link;
             return (
               <li key={id}>
@@ -40,11 +56,19 @@ const Nav = () => {
 };
 
 const NavContainer = styled.nav`
+  position: fixed;
+  top: 0;
+  width: 100%;
   height: 5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--clr-primary-3);
+  background-color: ${(props) =>
+    props.show ? "rgba(255, 255, 255, 0.8)" : "var(--clr-primary-3)"};
+  box-shadow: ${(props) => (props.show ? "var(--light-shadow);" : "")};
+  z-index: 1;
+  transition: var(--transition);
+
   .nav-center {
     width: 90vw;
     margin: 0 auto;
@@ -107,7 +131,8 @@ const NavContainer = styled.nav`
 
         span {
           position: relative;
-          color: var(--clr-white);
+          color: ${(props) =>
+            props.show ? "var(--clr-primary-3)" : "var(--clr-white)"};
           &:after {
             content: "";
             height: 2px;
@@ -137,7 +162,8 @@ const NavContainer = styled.nav`
     }
     .social-container {
       svg {
-        color: var(--clr-white);
+        color: ${(props) =>
+          props.show ? "var(--clr-primary-3)" : "var(--clr-white)"};
       }
     }
   }

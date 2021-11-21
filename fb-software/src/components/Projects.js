@@ -44,6 +44,10 @@ const Wrapper = styled.div`
     overflow: hidden;
   }
 
+  .item-info {
+    width: 100%;
+  }
+
   .project-imgs {
     position: relative;
     border: 0.25rem solid var(--clr-primary-3);
@@ -144,6 +148,12 @@ const Wrapper = styled.div`
   @media screen and (max-width: 767px) {
     .item-desc {
       width: 380px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .item-desc {
+      width: 90vw;
     }
   }
 `;

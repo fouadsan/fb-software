@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import { technologies } from "../constants";
+import { TECHNOLOGIES } from "../utils/constants";
 
 function Technologies() {
   let settings = {
@@ -36,7 +36,7 @@ function Technologies() {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
@@ -44,18 +44,18 @@ function Technologies() {
   };
 
   return (
-    <Wrapper className="page-100">
+    <Wrapper>
       <div className="title">
-        <h2>Technologies We Use</h2>
+        <h2>Technologies I Use</h2>
         <div className="underline"></div>
       </div>
       <Carousel {...settings}>
-        {technologies.map((tech) => {
-          const { id, name, logo } = tech;
+        {TECHNOLOGIES.map((tech) => {
+          const { id, logoUrl, name } = tech;
 
           return (
             <div key={id} className="img-container">
-              <img src={logo} alt={name} />
+              <img src={logoUrl} alt={name} />
             </div>
           );
         })}
@@ -64,15 +64,26 @@ function Technologies() {
   );
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.section`
   background: var(--clr-primary-10);
+  height: 60vh;
+  padding-top: 1rem;
+
   .title {
-    margin-top: 4rem;
+    margin-top: 8rem;
+
+    @media (max-width: 480px) {
+      margin-top: 0;
+    }
+  }
+
+  @media (max-width: 480px) {
+    height: 40vh;
   }
 `;
 
 const Carousel = styled(Slider)`
-  margin-top: 6rem;
+  margin-top: 4rem;
   ul li button {
     &:before {
       font-size: 10px;
@@ -105,6 +116,7 @@ const Carousel = styled(Slider)`
   .img-container {
     cursor: pointer;
     height: 150px;
+    margin-left: 1rem;
 
     img {
       padding: 0;
@@ -118,6 +130,16 @@ const Carousel = styled(Slider)`
         border-color: var(--clr-primary-4);
         opacity: 1;
       }
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .slick-dots li button {
+      visibility: hidden;
     }
   }
 `;

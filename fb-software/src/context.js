@@ -9,7 +9,7 @@ import {
   GET_PROJECTS_SUCCESS,
   GET_PROJECTS_ERROR,
 } from "./actions";
-import { projects_url as url } from "./constants";
+import { projects_url as url } from "./utils/constants";
 
 const initialState = {
   isSidebarOpen: false,

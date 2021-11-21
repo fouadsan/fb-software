@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-import { socials } from "../constants";
+import { SOCIALS } from "../utils/constants";
 
 function Socials() {
   return (
     <Wrapper className="social-btn-wrapper">
-      {socials.map((item) => {
+      {SOCIALS.map((item) => {
         const { id, title, icon } = item;
         return (
           <a key={id} href="/" className="social-btn" title={title}>

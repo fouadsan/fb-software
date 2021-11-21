@@ -6,6 +6,7 @@ import Error from "./Error";
 import Loading from "./Loading";
 import Services from "./Services";
 import Technologies from "./Technologies";
+import Experience from "./Experience";
 
 export {
   Navbar,
@@ -16,4 +17,5 @@ export {
   Error,
   Services,
   Technologies,
+  Experience,
 };

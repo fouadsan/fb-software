@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { services } from "../constants";
+import { SERVICES } from "../utils/constants";
 
 const Services = () => {
   return (
@@ -12,7 +12,7 @@ const Services = () => {
       </div>
       <div className="section-center">
         <div className="services-center">
-          {services.map((service) => {
+          {SERVICES.map((service) => {
             const { id, icon, title, text } = service;
             return (
               <article className="single-service" key={id}>
@@ -22,7 +22,7 @@ const Services = () => {
                   </div>
                 </div>
                 <div className="service-content">
-                  <h4>{title} development</h4>
+                  <h4>{title}</h4>
                   <p>{text}</p>
                 </div>
               </article>

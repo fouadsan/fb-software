@@ -1,7 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Hero, References, Services, Technologies } from "./components";
+import {
+  Hero,
+  References,
+  Services,
+  Technologies,
+  Experience,
+} from "./components";
 
 const HomePage = () => {
   return (
@@ -10,6 +16,7 @@ const HomePage = () => {
       <References />
       <Services />
       <Technologies />
+      <Experience />
     </Wrapper>
   );
 };
