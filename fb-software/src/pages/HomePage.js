@@ -6,17 +6,19 @@ import {
   References,
   Services,
   Technologies,
-  Experience,
-} from "./components";
+  Experiences,
+  Contact,
+} from "../components";
 
 const HomePage = () => {
   return (
     <Wrapper>
-      <Hero />
+      <Hero id={"hero"} />
       <References />
       <Services />
       <Technologies />
-      <Experience />
+      <Experiences />
+      <Contact />
     </Wrapper>
   );
 };

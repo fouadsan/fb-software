@@ -121,7 +121,7 @@ const HeroBtnsContainer = styled.div`
   .hero-btn {
     padding: 0.75rem 1.5rem;
     margin-right: 0.5rem;
-    font-size: 1rem;
+    font-weight: 600;
     display: flex;
     font-size: 1.25rem;
 

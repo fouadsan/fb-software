@@ -58,9 +58,6 @@ function References() {
 
 const Wrapper = styled.div`
   background: var(--clr-primary-10);
-
-  @media (min-width: 576px) {
-  }
 `;
 
 export default References;

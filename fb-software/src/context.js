@@ -13,10 +13,13 @@ import { projects_url as url } from "./utils/constants";
 
 const initialState = {
   isSidebarOpen: false,
-  prrojects_loading: false,
+  projects_loading: false,
   projects_error: false,
   projects: [],
   allCategories: [],
+  // experiences: [],
+  // experiences_loading: false,
+  // experiences_error: false,
 };
 
 const AppContext = React.createContext();

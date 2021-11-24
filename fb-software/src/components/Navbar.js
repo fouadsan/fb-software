@@ -1,15 +1,26 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { FaBars } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
+import { animateScroll as scroll } from "react-scroll";
 
 import logo from "../assets/logo.svg";
 import { LINKS } from "../utils/constants";
 import { useGlobalContext } from "../context";
 import Socials from "./Socials";
 
-const Nav = () => {
+const Nav = ({ toggle }) => {
+  const [scrollNav, setScrollNav] = useState(false);
   const { openSidebar } = useGlobalContext();
   const [show, setShow] = useState(false);
+
+  const changeNav = () => {
+    if (window.scrollY >= 80) {
+      setScrollNav(true);
+    } else {
+      setScrollNav(false);
+    }
+  };
 
   const handleShow = () => {
     window.addEventListener("scroll", () => {
@@ -20,19 +31,27 @@ const Nav = () => {
   };
 
   useEffect(() => {
+    window.addEventListener("scoll", changeNav);
+  }, []);
+
+  useEffect(() => {
     handleShow();
     return () => {
       window.removeEventListener("scroll", handleShow);
     };
   }, []);
 
+  const toggleHome = () => {
+    scroll.scrollToTop();
+  };
+
   return (
     <NavContainer show={show}>
       <div className="nav-center">
         <div className="nav-header">
-          <a href="/">
+          <NavLink href="/" onClick={toggleHome}>
             <img src={logo} alt="comfy sloth" />
-          </a>
+          </NavLink>
           <button type="button" className="nav-toggle" onClick={openSidebar}>
             <FaBars />
           </button>
@@ -42,9 +61,9 @@ const Nav = () => {
             const { id, text, url } = link;
             return (
               <li key={id}>
-                <a href={url}>
+                <NavLink to={url}>
                   <span>{text}</span>
-                </a>
+                </NavLink>
               </li>
             );
           })}

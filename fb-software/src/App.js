@@ -1,15 +1,21 @@
 import React from "react";
-import HomePage from "./Home";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import { Navbar, Sidebar } from "./components";
+import { HomePage, ErrorPage } from "./pages";
+import { Navbar, ScrollArrow, Sidebar, Footer } from "./components";
 
 function App() {
   return (
-    <React.Fragment>
+    <Router>
       <Navbar />
       <Sidebar />
-      <HomePage />
-    </React.Fragment>
+      <ScrollArrow />
+      <Routes>
+        <Route exact path="/" element={<HomePage />} />
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
+      <Footer />
+    </Router>
   );
 }
 

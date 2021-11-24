@@ -1,8 +1,23 @@
 import React from "react";
 import styled from "styled-components";
+// import ImgsViewer from "react-images-viewer";
 import { FaSearch } from "react-icons/fa";
 
 function Projects({ items }) {
+  // const IMG_SET = [
+  //   {
+  //     src: "http://example.com/img1.svg",
+  //     caption: "A forest",
+  //     // As an array
+  //     srcSet: [
+  //       "http://example.com/img1_1024.jpg 1024w",
+  //       "http://example.com/img1_800.jpg 800w",
+  //       "http://example.com/img1_500.jpg 500w",
+  //       "http://example.com/img1_320.jpg 320w",
+  //     ],
+  //   },
+  // ];
+
   return (
     <Wrapper className="section-center">
       {items.map((menuItem) => {
@@ -10,6 +25,7 @@ function Projects({ items }) {
         return (
           <article key={id} className="menu-item">
             <div className="project-imgs">
+              {/* <ImgsViewer imgs={IMG_SET} /> */}
               <img src={image} alt={name} className="thumb" />
               <a href="/" className="link">
                 <FaSearch />

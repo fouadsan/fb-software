@@ -7,7 +7,7 @@ const Services = () => {
   return (
     <Wrapper>
       <div className="title">
-        <h2>Services we Provide</h2>
+        <h2>services i provide</h2>
         <div className="underline"></div>
       </div>
       <div className="section-center">
@@ -35,7 +35,7 @@ const Services = () => {
 };
 
 const Wrapper = styled.section`
-  background: var(--clr-accent-10);
+  background: var(--clr-white);
 
   .title {
     padding-top: 4rem;
