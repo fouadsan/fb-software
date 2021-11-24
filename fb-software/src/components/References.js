@@ -8,6 +8,9 @@ import Categories from "./Categories";
 import Projects from "./Projects";
 
 function References() {
+  let Scroll = require("react-scroll");
+  let Element = Scroll.Element;
+
   const {
     projects_loading: loading,
     projects_error: error,
@@ -42,14 +45,16 @@ function References() {
   }
   if (projectItems.length) {
     return (
-      <Wrapper className="page-100">
-        <div className="title">
-          <h2>Some References</h2>
-          <div className="underline"></div>
-        </div>
-        <Categories filterItems={filterItems} />
-        <Projects items={projectItems} />
-      </Wrapper>
+      <Element name="references">
+        <Wrapper className="page-100">
+          <div className="title">
+            <h2>Some References</h2>
+            <div className="underline"></div>
+          </div>
+          <Categories filterItems={filterItems} />
+          <Projects items={projectItems} />
+        </Wrapper>
+      </Element>
     );
   } else {
     return null;

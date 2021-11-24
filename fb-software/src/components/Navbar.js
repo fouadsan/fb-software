@@ -2,25 +2,18 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { FaBars } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import { animateScroll as scroll } from "react-scroll";
+import { Link } from "react-scroll";
 
 import logo from "../assets/logo.svg";
 import { LINKS } from "../utils/constants";
+import { scrollTop, scrollToElement } from "../utils/helpers";
 import { useGlobalContext } from "../context";
 import Socials from "./Socials";
 
-const Nav = ({ toggle }) => {
-  const [scrollNav, setScrollNav] = useState(false);
+const Nav = () => {
   const { openSidebar } = useGlobalContext();
   const [show, setShow] = useState(false);
-
-  const changeNav = () => {
-    if (window.scrollY >= 80) {
-      setScrollNav(true);
-    } else {
-      setScrollNav(false);
-    }
-  };
+  const [showLinks, setShowLinks] = useState(true);
 
   const handleShow = () => {
     window.addEventListener("scroll", () => {
@@ -31,7 +24,11 @@ const Nav = ({ toggle }) => {
   };
 
   useEffect(() => {
-    window.addEventListener("scoll", changeNav);
+    if (window.location.pathname !== "/") {
+      setShowLinks(false);
+    } else {
+      setShowLinks(true);
+    }
   }, []);
 
   useEffect(() => {
@@ -41,15 +38,11 @@ const Nav = ({ toggle }) => {
     };
   }, []);
 
-  const toggleHome = () => {
-    scroll.scrollToTop();
-  };
-
   return (
     <NavContainer show={show}>
       <div className="nav-center">
         <div className="nav-header">
-          <NavLink href="/" onClick={toggleHome}>
+          <NavLink to="/" onClick={scrollTop}>
             <img src={logo} alt="comfy sloth" />
           </NavLink>
           <button type="button" className="nav-toggle" onClick={openSidebar}>
@@ -57,16 +50,17 @@ const Nav = ({ toggle }) => {
           </button>
         </div>
         <ul className="nav-links">
-          {LINKS.map((link) => {
-            const { id, text, url } = link;
-            return (
-              <li key={id}>
-                <NavLink to={url}>
-                  <span>{text}</span>
-                </NavLink>
-              </li>
-            );
-          })}
+          {showLinks &&
+            LINKS.map((link) => {
+              const { id, text, url } = link;
+              return (
+                <li key={id}>
+                  <Link to={url} onClick={() => scrollToElement(url)}>
+                    <span>{text}</span>
+                  </Link>
+                </li>
+              );
+            })}
         </ul>
         <Socials />
       </div>

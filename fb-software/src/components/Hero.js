@@ -6,43 +6,48 @@ import Socials from "./Socials";
 import heroImg from "../assets/hero-dev.jpg";
 
 const Hero = () => {
+  let Scroll = require("react-scroll");
+  let Element = Scroll.Element;
+
   return (
-    <Wrapper className="section-center">
-      <article className="text-container">
-        <div className="title">
-          <h1>fouad benayad</h1>
-          <div className="underline"></div>
-        </div>
-        <p>
-          A{" "}
-          <Typical
-            steps={[
-              "web developer",
-              2000,
-              "mobile developer",
-              2000,
-              "cyber security engineer",
-              2000,
-              "professional Software Developer with 3 years of experience in Web & Mobile development.",
-              10000,
-            ]}
-            loop={Infinity}
-            wrapper="span"
-          />
-        </p>
+    <Element name="about">
+      <Wrapper className="section-center">
+        <article className="text-container">
+          <div className="title">
+            <h1>fouad benayad</h1>
+            <div className="underline"></div>
+          </div>
+          <p>
+            A{" "}
+            <Typical
+              steps={[
+                "web developer",
+                2000,
+                "mobile developer",
+                2000,
+                "cyber security engineer",
+                2000,
+                "professional Software Developer with 3 years of experience in Web & Mobile development.",
+                10000,
+              ]}
+              loop={Infinity}
+              wrapper="span"
+            />
+          </p>
 
-        <HeroBtnsContainer>
-          <Socials />
-          <a href="/" className="btn hero-btn">
-            View Cv
-          </a>
-        </HeroBtnsContainer>
-      </article>
+          <HeroBtnsContainer>
+            <Socials />
+            <a href="/" className="btn hero-btn">
+              View Cv
+            </a>
+          </HeroBtnsContainer>
+        </article>
 
-      <article className="img-container">
-        <img src={heroImg} alt="nice table" className="main-img" />
-      </article>
-    </Wrapper>
+        <article className="img-container">
+          <img src={heroImg} alt="nice table" className="main-img" />
+        </article>
+      </Wrapper>
+    </Element>
   );
 };
 

@@ -6,25 +6,30 @@ import CoordinateItem from "./CoordinateItem";
 import { COORDINATES } from "../utils/constants";
 
 function Contact() {
+  let Scroll = require("react-scroll");
+  let Element = Scroll.Element;
+
   return (
-    <Wrapper className="page-100">
-      <div className="title">
-        <h2>contact me</h2>
-        <div className="underline"></div>
-      </div>
-      <div className="section-center">
-        <div className="contact-container">
-          <div className="coordinates">
-            {COORDINATES.map((coordinate) => {
-              return (
-                <CoordinateItem key={coordinate.id} coordinate={coordinate} />
-              );
-            })}
-          </div>
-          <ContactForm />
+    <Element name="contact">
+      <Wrapper className="page-100">
+        <div className="title">
+          <h2>contact me</h2>
+          <div className="underline"></div>
         </div>
-      </div>
-    </Wrapper>
+        <div className="section-center">
+          <div className="contact-container">
+            <div className="coordinates">
+              {COORDINATES.map((coordinate) => {
+                return (
+                  <CoordinateItem key={coordinate.id} coordinate={coordinate} />
+                );
+              })}
+            </div>
+            <ContactForm />
+          </div>
+        </div>
+      </Wrapper>
+    </Element>
   );
 }
 

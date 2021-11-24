@@ -4,33 +4,38 @@ import styled from "styled-components";
 import { SERVICES } from "../utils/constants";
 
 const Services = () => {
+  let Scroll = require("react-scroll");
+  let Element = Scroll.Element;
+
   return (
-    <Wrapper>
-      <div className="title">
-        <h2>services i provide</h2>
-        <div className="underline"></div>
-      </div>
-      <div className="section-center">
-        <div className="services-center">
-          {SERVICES.map((service) => {
-            const { id, icon, title, text } = service;
-            return (
-              <article className="single-service" key={id}>
-                <div className="service-thumb">
-                  <div className="service-icon">
-                    <img src={icon} alt="" />
-                  </div>
-                </div>
-                <div className="service-content">
-                  <h4>{title}</h4>
-                  <p>{text}</p>
-                </div>
-              </article>
-            );
-          })}
+    <Element name="services">
+      <Wrapper>
+        <div className="title">
+          <h2>services i provide</h2>
+          <div className="underline"></div>
         </div>
-      </div>
-    </Wrapper>
+        <div className="section-center">
+          <div className="services-center">
+            {SERVICES.map((service) => {
+              const { id, icon, title, text } = service;
+              return (
+                <article className="single-service" key={id}>
+                  <div className="service-thumb">
+                    <div className="service-icon">
+                      <img src={icon} alt="" />
+                    </div>
+                  </div>
+                  <div className="service-content">
+                    <h4>{title}</h4>
+                    <p>{text}</p>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </Wrapper>
+    </Element>
   );
 };
 

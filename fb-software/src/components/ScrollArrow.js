@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { FaArrowCircleUp } from "react-icons/fa";
+import { scrollTop } from "../utils/helpers";
 
 const ScrollArrow = () => {
   const [showScroll, setShowScroll] = useState(false);
@@ -11,10 +12,6 @@ const ScrollArrow = () => {
     } else if (showScroll && window.pageYOffset <= 400) {
       setShowScroll(false);
     }
-  };
-
-  const scrollTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   window.addEventListener("scroll", checkScrollTop);
