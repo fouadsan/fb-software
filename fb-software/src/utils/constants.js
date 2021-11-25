@@ -28,11 +28,10 @@ import otherCodeIcon from "../assets/other-code.png";
 import reactNativeIcon from "../assets/react-native.svg";
 
 export const LINKS = [
-  new Link(1, "home", "about", <FaHome />),
-  new Link(2, "about", "about", <FaFacebookSquare />),
-  new Link(3, "services", "services", <FaFacebookSquare />),
-  new Link(4, "references", "references", <FaFolderOpen />),
-  new Link(5, "contact", "contact", <FaPhoneSquareAlt />),
+  new Link(1, "home", <FaHome />),
+  new Link(2, "services", <FaFacebookSquare />),
+  new Link(3, "references", <FaFolderOpen />),
+  new Link(4, "contact", <FaPhoneSquareAlt />),
 ];
 
 export const SOCIALS = [

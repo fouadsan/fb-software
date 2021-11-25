@@ -10,7 +10,7 @@ const Hero = () => {
   let Element = Scroll.Element;
 
   return (
-    <Element name="about">
+    <Element name="home">
       <Wrapper className="section-center">
         <article className="text-container">
           <div className="title">

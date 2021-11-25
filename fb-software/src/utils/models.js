@@ -1,8 +1,7 @@
 class Link {
-  constructor(id, text, url, icon) {
+  constructor(id, name, icon) {
     this.id = id;
-    this.text = text;
-    this.url = url;
+    this.name = name;
     this.icon = icon;
   }
 }

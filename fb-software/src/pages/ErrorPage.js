@@ -16,7 +16,7 @@ const ErrorPage = () => {
 };
 
 const Wrapper = styled.main`
-  background: var(--clr-primary-9);
+  background: var(--clr-white);
   display: flex;
   justify-content: center;
   align-items: center;

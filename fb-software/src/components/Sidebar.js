@@ -22,12 +22,12 @@ const Sidebar = () => {
           </button>
         </div>
         <ul className="links">
-          {LINKS.map(({ id, text, url, icon }) => {
+          {LINKS.map(({ id, name, icon }) => {
             return (
               <li key={id}>
-                <a href={url} onClick={closeSidebar}>
+                <a href={name} onClick={closeSidebar}>
                   {icon}
-                  {text}
+                  {name}
                 </a>
               </li>
             );

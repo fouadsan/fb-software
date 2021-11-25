@@ -12,14 +12,14 @@ import Socials from "./Socials";
 
 const Nav = () => {
   const { openSidebar } = useGlobalContext();
-  const [show, setShow] = useState(false);
+  const [shadow, setShadow] = useState(false);
   const [showLinks, setShowLinks] = useState(true);
 
   const handleShow = () => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 100) {
-        setShow(true);
-      } else setShow(false);
+        setShadow(true);
+      } else setShadow(false);
     });
   };
 
@@ -39,7 +39,7 @@ const Nav = () => {
   }, []);
 
   return (
-    <NavContainer show={show}>
+    <NavContainer shadow={shadow}>
       <div className="nav-center">
         <div className="nav-header">
           <NavLink to="/" onClick={scrollTop}>
@@ -52,12 +52,12 @@ const Nav = () => {
         <ul className="nav-links">
           {showLinks &&
             LINKS.map((link) => {
-              const { id, text, url } = link;
+              const { id, name } = link;
               return (
                 <li key={id}>
-                  <Link to={url} onClick={() => scrollToElement(url)}>
-                    <span>{text}</span>
-                  </Link>
+                  <CustomLink to={name} onClick={() => scrollToElement(name)}>
+                    <span>{name}</span>
+                  </CustomLink>
                 </li>
               );
             })}
@@ -76,9 +76,8 @@ const NavContainer = styled.nav`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${(props) =>
-    props.show ? "rgba(255, 255, 255, 0.8)" : "var(--clr-primary-3)"};
-  box-shadow: ${(props) => (props.show ? "var(--light-shadow);" : "")};
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: ${(props) => (props.shadow ? "var(--light-shadow)" : "")};
   z-index: 1;
   transition: var(--transition);
 
@@ -129,44 +128,9 @@ const NavContainer = styled.nav`
     .nav-links {
       display: flex;
       justify-content: center;
+
       li {
         margin: 0 0.5rem;
-      }
-      a {
-        display: flex;
-        align-items: center;
-        padding: 0 12px;
-        font-size: 1rem;
-        font-weight: 600;
-        text-transform: capitalize;
-        letter-spacing: var(--spacing);
-        padding: 0.5rem;
-
-        span {
-          position: relative;
-          color: ${(props) =>
-            props.show ? "var(--clr-primary-3)" : "var(--clr-white)"};
-          &:after {
-            content: "";
-            height: 2px;
-            background-color: var(--clr-primary-7);
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: -6px;
-            opacity: 0;
-            transform-origin: left center;
-            transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
-            transform: scaleX(0);
-          }
-        }
-
-        &:hover {
-          span:after {
-            transform: scale(1);
-            opacity: 1;
-          }
-        }
       }
     }
 
@@ -175,9 +139,45 @@ const NavContainer = styled.nav`
     }
     .social-container {
       svg {
-        color: ${(props) =>
-          props.show ? "var(--clr-primary-3)" : "var(--clr-white)"};
+        color: var(--clr-primary-3);
       }
+    }
+  }
+`;
+
+const CustomLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  letter-spacing: var(--spacing);
+  padding: 0.5rem;
+  cursor: pointer;
+
+  span {
+    position: relative;
+    color: var(--clr-primary-3);
+    &:after {
+      content: "";
+      height: 2px;
+      background-color: var(--clr-primary-7);
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -6px;
+      opacity: 0;
+      transform-origin: left center;
+      transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+      transform: scaleX(0);
+    }
+  }
+
+  &:hover {
+    span:after {
+      transform: scaleX(1);
+      opacity: 1;
     }
   }
 `;
