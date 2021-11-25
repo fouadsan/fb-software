@@ -15,6 +15,8 @@ const Nav = () => {
   const { openSidebar } = useGlobalContext();
   const [shadow, setShadow] = useState(false);
 
+
+  // last update
   useEffect(() => {
     console.log(window.location.pathname);
     if (window.location.pathname !== "/") {
@@ -23,6 +25,7 @@ const Nav = () => {
       setShowLinks(true);
     }
   }, [window.location.pathname]);
+  // last update
 
   const handleShow = () => {
     window.addEventListener("scroll", () => {
