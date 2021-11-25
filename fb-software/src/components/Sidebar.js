@@ -7,7 +7,7 @@ import { LINKS } from "../utils/constants";
 import { useGlobalContext } from "../context";
 import Socials from "./Socials";
 
-const Sidebar = () => {
+const Sidebar = ({ showLinks }) => {
   const { isSidebarOpen, closeSidebar } = useGlobalContext();
 
   return (
@@ -17,21 +17,23 @@ const Sidebar = () => {
       >
         <div className="sidebar-header">
           <img src={logo} alt="comfy sloth" className="logo" />
+
           <button type="button" className="close-btn" onClick={closeSidebar}>
             <FaTimes />
           </button>
         </div>
         <ul className="links">
-          {LINKS.map(({ id, name, icon }) => {
-            return (
-              <li key={id}>
-                <a href={name} onClick={closeSidebar}>
-                  {icon}
-                  {name}
-                </a>
-              </li>
-            );
-          })}
+          {showLinks &&
+            LINKS.map(({ id, name, icon }) => {
+              return (
+                <li key={id}>
+                  <a href={name} onClick={closeSidebar}>
+                    {icon}
+                    {name}
+                  </a>
+                </li>
+              );
+            })}
         </ul>
         <Socials />
       </aside>

@@ -58,7 +58,13 @@ export const AppProvider = ({ children }) => {
   }, []);
 
   return (
-    <AppContext.Provider value={{ ...state, openSidebar, closeSidebar }}>
+    <AppContext.Provider
+      value={{
+        ...state,
+        openSidebar,
+        closeSidebar,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );

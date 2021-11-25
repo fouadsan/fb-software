@@ -11,9 +11,18 @@ import { useGlobalContext } from "../context";
 import Socials from "./Socials";
 
 const Nav = () => {
+  const [showLinks, setShowLinks] = useState(true);
   const { openSidebar } = useGlobalContext();
   const [shadow, setShadow] = useState(false);
-  const [showLinks, setShowLinks] = useState(true);
+
+  useEffect(() => {
+    console.log(window.location.pathname);
+    if (window.location.pathname !== "/") {
+      setShowLinks(false);
+    } else {
+      setShowLinks(true);
+    }
+  }, [window.location.pathname]);
 
   const handleShow = () => {
     window.addEventListener("scroll", () => {
@@ -22,14 +31,6 @@ const Nav = () => {
       } else setShadow(false);
     });
   };
-
-  useEffect(() => {
-    if (window.location.pathname !== "/") {
-      setShowLinks(false);
-    } else {
-      setShowLinks(true);
-    }
-  }, []);
 
   useEffect(() => {
     handleShow();
@@ -45,9 +46,11 @@ const Nav = () => {
           <NavLink to="/" onClick={scrollTop}>
             <img src={logo} alt="comfy sloth" />
           </NavLink>
-          <button type="button" className="nav-toggle" onClick={openSidebar}>
-            <FaBars />
-          </button>
+          {showLinks && (
+            <button type="button" className="nav-toggle" onClick={openSidebar}>
+              <FaBars />
+            </button>
+          )}
         </div>
         <ul className="nav-links">
           {showLinks &&

@@ -30,7 +30,6 @@ const Hero = () => {
                 "professional Software Developer with 3 years of experience in Web & Mobile development.",
                 10000,
               ]}
-              loop={Infinity}
               wrapper="span"
             />
           </p>
