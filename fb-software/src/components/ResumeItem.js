@@ -20,9 +20,13 @@ function ResumeItem({ experience }) {
 }
 
 const Wrapper = styled.div`
-  padding: 0 0 20px 20px;
+  padding: 0 0 2rem 2rem;
   border-left: 2px solid var(--clr-primary-3);
   position: relative;
+
+  h4 {
+    font-size: 1.2rem;
+  }
 
   h5 {
     background: var(--clr-accent-10);
@@ -39,7 +43,6 @@ const Wrapper = styled.div`
   ul {
     padding-left: 20px;
     margin-right: 20px;
-    border: 1px dotted var(--clr-primary-8);
 
     li {
       padding-bottom: 10px;

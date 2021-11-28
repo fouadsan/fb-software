@@ -38,11 +38,7 @@ function References() {
   if (error) {
     return <Error />;
   }
-  if (projects.length < 1) {
-    return (
-      <h5 className="text-center">Sorry, no projects matched your search</h5>
-    );
-  }
+
   if (projectItems.length) {
     return (
       <Element name="references">
@@ -57,7 +53,17 @@ function References() {
       </Element>
     );
   } else {
-    return null;
+    return (
+      <Element name="references">
+        <Wrapper className="page-100">
+          <div className="title">
+            <h2>Some References</h2>
+            <div className="underline"></div>
+          </div>
+          <Error />
+        </Wrapper>
+      </Element>
+    );
   }
 }
 

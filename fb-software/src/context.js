@@ -1,5 +1,6 @@
 import React, { useContext, useReducer, useEffect } from "react";
-import axios from "axios";
+import db from "./firebase";
+import { collection, getDocs } from "firebase/firestore";
 
 import reducer from "./reducer";
 import {
@@ -9,7 +10,6 @@ import {
   GET_PROJECTS_SUCCESS,
   GET_PROJECTS_ERROR,
 } from "./actions";
-import { projects_url as url } from "./utils/constants";
 
 const initialState = {
   isSidebarOpen: false,
@@ -35,11 +35,16 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: SIDEBAR_CLOSE });
   };
 
-  const fetchProjects = async (url) => {
+  const fetchProjects = async () => {
     dispatch({ type: GET_PROJECTS_BEGIN });
+    let projects = [];
+
     try {
-      const response = await axios.get(url);
-      const projects = response.data;
+      const querySnapshot = await getDocs(collection(db, "references"));
+      querySnapshot.forEach((doc) => {
+        projects.push({ id: doc.id, ...doc.data() });
+      });
+
       const allCategories = [
         "all",
         ...new Set(projects.map((project) => project.category)),
@@ -54,7 +59,7 @@ export const AppProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    fetchProjects(url);
+    fetchProjects();
   }, []);
 
   return (

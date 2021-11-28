@@ -10,22 +10,9 @@ import { scrollTop, scrollToElement } from "../utils/helpers";
 import { useGlobalContext } from "../context";
 import Socials from "./Socials";
 
-const Nav = () => {
-  const [showLinks, setShowLinks] = useState(true);
+const Nav = ({ showLinks, setShowLinks }) => {
   const { openSidebar } = useGlobalContext();
   const [shadow, setShadow] = useState(false);
-
-
-  // last update
-  useEffect(() => {
-    console.log(window.location.pathname);
-    if (window.location.pathname !== "/") {
-      setShowLinks(false);
-    } else {
-      setShowLinks(true);
-    }
-  }, [window.location.pathname]);
-  // last update
 
   const handleShow = () => {
     window.addEventListener("scroll", () => {
@@ -46,7 +33,15 @@ const Nav = () => {
     <NavContainer shadow={shadow}>
       <div className="nav-center">
         <div className="nav-header">
-          <NavLink to="/" onClick={scrollTop}>
+          <NavLink
+            to="/"
+            onClick={() => {
+              if (!showLinks) {
+                setShowLinks(true);
+              }
+              scrollTop();
+            }}
+          >
             <img src={logo} alt="comfy sloth" />
           </NavLink>
           {showLinks && (

@@ -31,7 +31,7 @@ class Technology {
   }
 }
 
-class Experience {
+class Resume {
   constructor(id, title, start_date, end_date, place, description) {
     this.id = id;
     this.title = title;
@@ -42,6 +42,10 @@ class Experience {
   }
 }
 
+class Education extends Resume {}
+
+class Experience extends Resume {}
+
 class Coordinate {
   constructor(id, icon, title, text) {
     this.id = id;
@@ -51,4 +55,4 @@ class Coordinate {
   }
 }
 
-export { Link, Social, Service, Technology, Experience, Coordinate };
+export { Link, Social, Service, Technology, Education, Experience, Coordinate };

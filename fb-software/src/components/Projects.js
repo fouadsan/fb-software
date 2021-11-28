@@ -1,44 +1,58 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 import styled from "styled-components";
-// import ImgsViewer from "react-images-viewer";
-import { FaSearch } from "react-icons/fa";
+import ImageViewer from "react-simple-image-viewer";
+import { FaEye } from "react-icons/fa";
 
 function Projects({ items }) {
-  // const IMG_SET = [
-  //   {
-  //     src: "http://example.com/img1.svg",
-  //     caption: "A forest",
-  //     // As an array
-  //     srcSet: [
-  //       "http://example.com/img1_1024.jpg 1024w",
-  //       "http://example.com/img1_800.jpg 800w",
-  //       "http://example.com/img1_500.jpg 500w",
-  //       "http://example.com/img1_320.jpg 320w",
-  //     ],
-  //   },
-  // ];
+  const [currentImage, setCurrentImage] = useState(0);
+  const [isViewerOpen, setIsViewerOpen] = useState(false);
+
+  const openImageViewer = useCallback((index) => {
+    setCurrentImage(index);
+    setIsViewerOpen(true);
+  }, []);
+
+  const closeImageViewer = () => {
+    setCurrentImage(0);
+    setIsViewerOpen(false);
+  };
 
   return (
     <Wrapper className="section-center">
       {items.map((menuItem) => {
-        const { id, name, image, price } = menuItem;
+        const { id, title, images, description } = menuItem;
+
         return (
           <article key={id} className="menu-item">
             <div className="project-imgs">
-              {/* <ImgsViewer imgs={IMG_SET} /> */}
-              <img src={image} alt={name} className="thumb" />
-              <a href="/" className="link">
-                <FaSearch />
-              </a>
+              {images.map((src, index) => (
+                <img src={src} className="thumb" key={index} alt={title} />
+              ))}
+
+              {isViewerOpen && (
+                <ImageViewer
+                  src={images}
+                  currentIndex={currentImage}
+                  disableScroll={false}
+                  closeOnClickOutside={true}
+                  onClose={closeImageViewer}
+                />
+              )}
+
+              <button
+                type="button"
+                className="link"
+                onClick={() => openImageViewer(0)}
+              >
+                <FaEye />
+              </button>
             </div>
             <div className="item-info">
               <header>
-                <h4>{name}</h4>
+                <h4>{title}</h4>
                 <h4 className="price">mobile</h4>
               </header>
-              <p className="item-desc">
-                miloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremiloremmiloremilorem
-              </p>
+              <p className="item-desc">{description}</p>
             </div>
           </article>
         );
@@ -56,8 +70,8 @@ const Wrapper = styled.div`
     display: grid;
     gap: 1rem 2rem;
     width: 100%;
+    height: 180px;
     max-width: 25rem;
-    overflow: hidden;
   }
 
   .item-info {
@@ -68,6 +82,7 @@ const Wrapper = styled.div`
     position: relative;
     border: 0.25rem solid var(--clr-primary-3);
     border-radius: var(--radius);
+    overflow: hidden;
 
     &:hover {
       .thumb {
@@ -80,10 +95,9 @@ const Wrapper = styled.div`
   }
 
   .thumb {
-    height: 200px;
+    height: 100%;
     width: 100%;
     object-fit: cover;
-    display: block;
     transition: var(--transition);
   }
 
@@ -99,6 +113,7 @@ const Wrapper = styled.div`
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 50%;
+    border: none;
     transition: var(--transition);
     opacity: 0;
     cursor: pointer;

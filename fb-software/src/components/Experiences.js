@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { EXPERIENCES } from "../utils/constants";
+import { EDUCATION, EXPERIENCES } from "../utils/constants";
 import ResumeItem from "./ResumeItem";
 
 function Experiences() {
@@ -14,7 +14,7 @@ function Experiences() {
       <div className="section-center">
         <div className="resume">
           <h3>education</h3>
-          {EXPERIENCES.map((exp) => {
+          {EDUCATION.map((exp) => {
             return <ResumeItem key={exp.id} experience={exp} />;
           })}
         </div>
@@ -46,7 +46,8 @@ const Wrapper = styled.div`
   }
 
   h3 {
-    padding: 1rem 0;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
   }
 `;
 

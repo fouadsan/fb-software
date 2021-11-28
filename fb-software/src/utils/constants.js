@@ -4,6 +4,7 @@ import {
   Social,
   Service,
   Technology,
+  Education,
   Experience,
   Coordinate,
 } from "./models";
@@ -146,6 +147,33 @@ export const TECHNOLOGIES = [
   ),
 ];
 
+export const EDUCATION = [
+  new Education(
+    1,
+    "Master Degree in Cyber Security",
+    "10/10/2020",
+    "10/10/2020",
+    "el bez",
+    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ea. Perferendis corrupti reiciendis nesciunt rerum velit autem unde numquam nisi"
+  ),
+  new Education(
+    2,
+    "React Complete course tutorials and projects",
+    "10/10/2020",
+    "10/10/2020",
+    "el bez",
+    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ea. Perferendis corrupti reiciendis nesciunt rerum velit autem unde numquam nisi"
+  ),
+  new Education(
+    3,
+    "webIcon",
+    "august, 2021",
+    "present",
+    "el bez",
+    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ea. Perferendis corrupti reiciendis nesciunt rerum velit autem unde numquam nisi"
+  ),
+];
+
 export const EXPERIENCES = [
   new Experience(
     1,
@@ -179,6 +207,6 @@ export const COORDINATES = [
   new Coordinate(3, <FaPhone />, "phone", "+213 561 587 780"),
 ];
 
-export const projects_url = "https://course-api.com/react-store-products";
+// export const projects_url = "https://course-api.com/react-store-products";
 
 // export const single_product_url = `https://course-api.com/react-store-single-product?id=`
