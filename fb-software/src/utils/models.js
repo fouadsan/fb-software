@@ -14,15 +14,6 @@ class Social {
   }
 }
 
-class Service {
-  constructor(id, icon, title, text) {
-    this.id = id;
-    this.icon = icon;
-    this.title = title;
-    this.text = text;
-  }
-}
-
 class Technology {
   constructor(id, logoUrl, name) {
     this.id = id;
@@ -55,4 +46,4 @@ class Coordinate {
   }
 }
 
-export { Link, Social, Service, Technology, Education, Experience, Coordinate };
+export { Link, Social, Technology, Education, Experience, Coordinate };

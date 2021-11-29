@@ -10,7 +10,7 @@ function App() {
   return (
     <Router>
       <Navbar showLinks={showLinks} setShowLinks={setShowLinks} />
-      <Sidebar />
+      <Sidebar showLinks={showLinks} />
       <ScrollArrow />
       <Routes>
         <Route exact path="/" element={<HomePage />} />

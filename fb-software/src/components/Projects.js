@@ -177,6 +177,9 @@ const Wrapper = styled.div`
   }
 
   @media screen and (max-width: 767px) {
+    .menu-item {
+      height: 300px;
+    }
     .item-desc {
       width: 380px;
     }

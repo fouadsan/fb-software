@@ -4,23 +4,31 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import { TECHNOLOGIES } from "../utils/constants";
+import { useGlobalContext } from "../context";
+import Error from "./Error";
+import Loading from "./Loading";
 
 function Technologies() {
+  const {
+    technologies_loading: loading,
+    technologies_error: error,
+    technologies,
+  } = useGlobalContext();
+
   let settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 2,
+    slidesToShow: 1,
+    slidesToScroll: 1,
     autoplay: true,
     initialSlide: 0,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 4,
-          slidesToScroll: 2,
+          slidesToShow: 1,
+          slidesToScroll: 1,
           infinite: true,
           dots: true,
         },
@@ -28,7 +36,7 @@ function Technologies() {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
           slidesToScroll: 1,
           initialSlide: 1,
         },
@@ -43,6 +51,13 @@ function Technologies() {
     ],
   };
 
+  if (loading) {
+    return <Loading />;
+  }
+  if (error) {
+    return <Error />;
+  }
+
   return (
     <Wrapper>
       <div className="title">
@@ -50,7 +65,7 @@ function Technologies() {
         <div className="underline"></div>
       </div>
       <Carousel {...settings}>
-        {TECHNOLOGIES.map((tech) => {
+        {technologies.map((tech) => {
           const { id, logoUrl, name } = tech;
 
           return (

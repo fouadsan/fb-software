@@ -33,7 +33,7 @@ const Arrow = styled(FaArrowCircleUp)`
   align-items: center;
   height: 40px;
   justify-content: center;
-  z-index: 1000;
+  z-index: 2;
   cursor: pointer;
   animation: fadeIn 0.3s;
   transition: opacity 0.4s;
@@ -41,6 +41,11 @@ const Arrow = styled(FaArrowCircleUp)`
 
   &:hover {
     opacity: 1;
+  }
+
+  @media (max-width: 667px) {
+    left: 35vw;
+    height: 35px;
   }
 `;
 

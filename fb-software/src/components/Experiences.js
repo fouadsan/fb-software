@@ -1,10 +1,47 @@
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import styled from "styled-components";
 
-import { EDUCATION, EXPERIENCES } from "../utils/constants";
 import ResumeItem from "./ResumeItem";
+import { useGlobalContext } from "../context";
+import Error from "./Error";
+import Loading from "./Loading";
 
 function Experiences() {
+  const {
+    experiences_loading: loading,
+    experiences_error: error,
+    experiences,
+  } = useGlobalContext();
+
+  const [education, setEducation] = useState([]);
+  const [expos, setExpos] = useState([]);
+
+  const filterExperiences = useCallback(() => {
+    let educationArr = [];
+    let experiencesArr = [];
+
+    experiences.forEach((item) => {
+      if (item.type === "education") {
+        educationArr.push(item);
+      } else {
+        experiencesArr.push(item);
+      }
+      setEducation(educationArr);
+      setExpos(experiencesArr);
+    });
+  }, [experiences]);
+
+  useEffect(() => {
+    filterExperiences();
+  }, [filterExperiences]);
+
+  if (loading) {
+    return <Loading />;
+  }
+  if (error) {
+    return <Error />;
+  }
+
   return (
     <Wrapper className="page-100">
       <div className="title">
@@ -12,18 +49,23 @@ function Experiences() {
         <div className="underline"></div>
       </div>
       <div className="section-center">
-        <div className="resume">
-          <h3>education</h3>
-          {EDUCATION.map((exp) => {
-            return <ResumeItem key={exp.id} experience={exp} />;
-          })}
-        </div>
-        <div className="resume">
-          <h3>professional experience</h3>
-          {EXPERIENCES.map((exp) => {
-            return <ResumeItem key={exp.id} experience={exp} />;
-          })}
-        </div>
+        {education.length > 0 && (
+          <div className="resume">
+            <h3>education</h3>
+            {education.map((exp) => {
+              return <ResumeItem key={exp.id} experience={exp} />;
+            })}
+          </div>
+        )}
+
+        {expos.length > 0 && (
+          <div className="resume">
+            <h3>professional experience</h3>
+            {expos.map((exp) => {
+              return <ResumeItem key={exp.id} experience={exp} />;
+            })}
+          </div>
+        )}
       </div>
     </Wrapper>
   );

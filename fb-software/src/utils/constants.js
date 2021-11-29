@@ -2,7 +2,6 @@ import React from "react";
 import {
   Link,
   Social,
-  Service,
   Technology,
   Education,
   Experience,
@@ -22,10 +21,6 @@ import {
 } from "react-icons/fa";
 
 import { GoLocation } from "react-icons/go";
-
-import mobileIcon from "../assets/mobile-dev.png";
-import webIcon from "../assets/web-dev.png";
-import otherCodeIcon from "../assets/other-code.png";
 import reactNativeIcon from "../assets/react-native.svg";
 
 export const LINKS = [
@@ -40,27 +35,6 @@ export const SOCIALS = [
   new Social(2, <FaLinkedin />, "linkedin"),
   new Social(3, <FaTwitterSquare />, "twitter"),
   new Social(4, <FaGithub />, "github"),
-];
-
-export const SERVICES = [
-  new Service(
-    1,
-    webIcon,
-    "web development",
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ea. Perferendis corrupti reiciendis nesciunt rerum velit autem unde numquam nisi"
-  ),
-  new Service(
-    2,
-    mobileIcon,
-    "mobile development",
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ea. Perferendis corrupti reiciendis nesciunt rerum velit autem unde numquam nisi"
-  ),
-  new Service(
-    3,
-    otherCodeIcon,
-    "other coding stuff",
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ea. Perferendis corrupti reiciendis nesciunt rerum velit autem unde numquam nisi"
-  ),
 ];
 
 export const TECHNOLOGIES = [

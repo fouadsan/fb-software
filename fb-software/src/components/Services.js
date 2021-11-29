@@ -1,11 +1,26 @@
 import React from "react";
 import styled from "styled-components";
-
-import { SERVICES } from "../utils/constants";
+ 
+import { useGlobalContext } from "../context";
+import Error from "./Error";
+import Loading from "./Loading";
 
 const Services = () => {
   let Scroll = require("react-scroll");
   let Element = Scroll.Element;
+
+  const {
+    services_loading: loading,
+    services_error: error,
+    services,
+  } = useGlobalContext();
+
+  if (loading) {
+    return <Loading />;
+  }
+  if (error) {
+    return <Error />;
+  }
 
   return (
     <Element name="services">
@@ -16,8 +31,8 @@ const Services = () => {
         </div>
         <div className="section-center">
           <div className="services-center">
-            {SERVICES.map((service) => {
-              const { id, icon, title, text } = service;
+            {services.map((service) => {
+              const { id, icon, title, description } = service;
               return (
                 <article className="single-service" key={id}>
                   <div className="service-thumb">
@@ -27,7 +42,7 @@ const Services = () => {
                   </div>
                   <div className="service-content">
                     <h4>{title}</h4>
-                    <p>{text}</p>
+                    <p>{description}</p>
                   </div>
                 </article>
               );
