@@ -2,16 +2,16 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { FaBars } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import { Link } from "react-scroll";
 
-import logo from "../assets/logo.svg";
+import logo from "../assets/logo.png";
 import { LINKS } from "../utils/constants";
 import { scrollTop, scrollToElement } from "../utils/helpers";
 import { useGlobalContext } from "../context";
 import Socials from "./Socials";
+import CustomLink from "./CustomLink";
 
 const Nav = ({ showLinks, setShowLinks }) => {
-  const { openSidebar } = useGlobalContext();
+  const { isSidebarOpen, openSidebar } = useGlobalContext();
   const [shadow, setShadow] = useState(false);
 
   const handleShow = () => {
@@ -42,7 +42,7 @@ const Nav = ({ showLinks, setShowLinks }) => {
               scrollTop();
             }}
           >
-            <img src={logo} alt="comfy sloth" />
+            <img src={logo} alt="fouad b" />
           </NavLink>
           {showLinks && (
             <button type="button" className="nav-toggle" onClick={openSidebar}>
@@ -56,9 +56,11 @@ const Nav = ({ showLinks, setShowLinks }) => {
               const { id, name } = link;
               return (
                 <li key={id}>
-                  <CustomLink to={name} onClick={() => scrollToElement(name)}>
-                    <span>{name}</span>
-                  </CustomLink>
+                  <CustomLink
+                    isSidebar={isSidebarOpen}
+                    name={name}
+                    onClickHandler={() => scrollToElement(name)}
+                  />
                 </li>
               );
             })}
@@ -142,43 +144,6 @@ const NavContainer = styled.nav`
       svg {
         color: var(--clr-primary-3);
       }
-    }
-  }
-`;
-
-const CustomLink = styled(Link)`
-  display: flex;
-  align-items: center;
-  padding: 0 12px;
-  font-size: 1rem;
-  font-weight: 600;
-  text-transform: capitalize;
-  letter-spacing: var(--spacing);
-  padding: 0.5rem;
-  cursor: pointer;
-
-  span {
-    position: relative;
-    color: var(--clr-primary-3);
-    &:after {
-      content: "";
-      height: 2px;
-      background-color: var(--clr-primary-7);
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: -6px;
-      opacity: 0;
-      transform-origin: left center;
-      transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
-      transform: scaleX(0);
-    }
-  }
-
-  &:hover {
-    span:after {
-      transform: scaleX(1);
-      opacity: 1;
     }
   }
 `;

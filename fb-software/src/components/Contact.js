@@ -48,8 +48,8 @@ const Wrapper = styled.div`
     width: 25%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    align-items: flex-start;
+    justify-content: space-evenly;
+    margin-bottom: 1rem;
   }
 
   @media screen and (max-width: 992px) {

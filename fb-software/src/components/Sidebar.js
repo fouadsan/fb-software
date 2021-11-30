@@ -2,13 +2,24 @@ import React from "react";
 import { FaTimes } from "react-icons/fa";
 import styled from "styled-components";
 
-import logo from "../assets/logo.svg";
+import logo from "../assets/logo.png";
 import { LINKS } from "../utils/constants";
+import { scrollTop, scrollToElement } from "../utils/helpers";
 import { useGlobalContext } from "../context";
 import Socials from "./Socials";
+import CustomLink from "./CustomLink";
 
 const Sidebar = ({ showLinks }) => {
   const { isSidebarOpen, closeSidebar } = useGlobalContext();
+
+  const handleClick = (name) => {
+    closeSidebar();
+    if (name) {
+      scrollToElement(name);
+    } else {
+      scrollTop();
+    }
+  };
 
   return (
     <SidebarContainer>
@@ -16,7 +27,12 @@ const Sidebar = ({ showLinks }) => {
         className={`${isSidebarOpen ? "sidebar show-sidebar" : "sidebar"}`}
       >
         <div className="sidebar-header">
-          <img src={logo} alt="comfy sloth" className="logo" />
+          <img
+            src={logo}
+            alt="comfy sloth"
+            className="logo"
+            onClick={() => handleClick()}
+          />
 
           <button type="button" className="close-btn" onClick={closeSidebar}>
             <FaTimes />
@@ -27,10 +43,15 @@ const Sidebar = ({ showLinks }) => {
             LINKS.map(({ id, name, icon }) => {
               return (
                 <li key={id}>
-                  <a href={name} onClick={closeSidebar}>
+                  <CustomLink
+                    isSidebar={isSidebarOpen}
+                    icon={icon}
+                    name={name}
+                    onClickHandler={() => handleClick(name)}
+                  >
                     {icon}
                     {name}
-                  </a>
+                  </CustomLink>
                 </li>
               );
             })}
@@ -48,6 +69,7 @@ const SidebarContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 1rem 1.5rem;
+    overflow: hidden;
   }
 
   .close-btn {
@@ -67,41 +89,12 @@ const SidebarContainer = styled.div`
 
   .logo {
     justify-self: center;
-    height: 45px;
+    width: 130px;
+    cursor: pointer;
   }
 
   .links {
     margin-bottom: 2rem;
-  }
-
-  .links a {
-    display: flex;
-    align-items: center;
-    font-size: 1.25rem;
-    font-weight: bold;
-    text-transform: capitalize;
-    padding: 1rem 1.5rem;
-    color: var(--clr-accent-3);
-    transition: var(--transition);
-    letter-spacing: var(--spacing);
-  }
-
-  .links a:hover {
-    padding: 1rem 1.5rem;
-    padding-left: 2rem;
-    background: var(--clr-accent-10);
-    color: var(--clr-accent-2);
-  }
-
-  .links a svg {
-    font-size: 1.5rem;
-    color: var(--clr-accent-5);
-    margin-right: 1rem;
-    transition: var(--transition);
-  }
-
-  .links a:hover svg {
-    color: var(--clr-accent-4);
   }
 
   .sidebar {
