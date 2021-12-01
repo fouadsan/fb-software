@@ -17,23 +17,24 @@ const Hero = () => {
             <h1>fouad benayad</h1>
             <div className="underline"></div>
           </div>
-          <p>
-            A{" "}
-            <Typical
-              steps={[
-                "web developer",
-                2000,
-                "mobile developer",
-                2000,
-                "cyber security engineer",
-                2000,
-                "professional Software Developer with 3 years of experience in Web & Mobile development.",
-                10000,
-              ]}
-              wrapper="span"
-            />
-          </p>
-
+          <div className="text-paragraph">
+            <p>
+              A{" "}
+              <Typical
+                steps={[
+                  "web developer.",
+                  2000,
+                  "mobile developer.",
+                  2000,
+                  "cyber security engineer.",
+                  2000,
+                  "professional Software Developer with 3 years of experience in Web & Mobile development.",
+                  10000,
+                ]}
+                wrapper="span"
+              />
+            </p>
+          </div>
           <HeroBtnsContainer>
             <Socials />
             <a href="/" className="btn hero-btn">
@@ -54,9 +55,14 @@ const Wrapper = styled.section`
   min-height: 100vh;
   display: grid;
   place-items: center;
+  margin-top: 5rem;
+  overflow: hidden;
 
   .text-container {
-    font-family: "Kaushan Script", cursive;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: "Indie Flower", cursive;
     width: 100%;
 
     h1 {
@@ -64,8 +70,11 @@ const Wrapper = styled.section`
       font-weight: 600;
     }
 
-    p {
+    .text-paragraph {
       min-height: 230px;
+    }
+
+    p {
       width: 100%;
       margin-top: 1rem;
       font-size: 28px;
@@ -88,7 +97,7 @@ const Wrapper = styled.section`
     height: calc(100vh - 5rem);
     grid-template-columns: 1fr 1fr;
     gap: 8rem;
-
+    margin-top: auto;
     h1 {
       margin-bottom: 2rem;
     }
@@ -99,22 +108,26 @@ const Wrapper = styled.section`
 
     .img-container {
       display: block;
+      height: 570px;
       position: relative;
-      cursor: pointer;
       animation: roll 10s infinite;
     }
 
     .main-img {
       width: 100%;
-      height: 600px;
+      height: 100%;
       position: relative;
-      display: block;
       object-fit: cover;
     }
   }
 
   @media (max-width: 480px) {
+    margin-top: 2rem;
     padding-bottom: 2rem;
+
+    .text-paragraph {
+      height: 50vh;
+    }
   }
 `;
 
@@ -123,28 +136,35 @@ const HeroBtnsContainer = styled.div`
   justify-content: space-evenly;
 
   .hero-btn {
-    padding: 0.75rem 1.5rem;
+    padding: 0.6rem 1.5rem;
     margin-right: 0.5rem;
     font-weight: 600;
     display: flex;
     font-size: 1.25rem;
+  }
 
-    svg {
-      font-size: 1.5rem;
-      margin-right: 1rem;
-    }
+  svg {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+  }
 
-    @media (max-width: 1053px) {
+  @media (max-width: 1053px) {
+    .hero-btn {
       font-size: 0.9rem;
-
-      svg {
-        font-size: 1.2rem;
-        margin-right: 1rem;
-      }
     }
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 1053px) {
+    padding-bottom: 2rem;
+  }
+
+  @media (max-width: 387px) {
+    flex-direction: column;
+    align-items: center;
+
+    .social-btn-wrapper {
+      margin-bottom: 1.5rem;
+    }
   }
 `;
 

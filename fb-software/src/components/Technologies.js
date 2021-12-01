@@ -81,7 +81,7 @@ function Technologies() {
 
 const Wrapper = styled.section`
   background: var(--clr-primary-10);
-  height: 60vh;
+  min-height: 60vh;
   padding-top: 1rem;
 
   .title {

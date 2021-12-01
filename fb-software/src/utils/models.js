@@ -14,14 +14,6 @@ class Social {
   }
 }
 
-class Technology {
-  constructor(id, logoUrl, name) {
-    this.id = id;
-    this.logoUrl = logoUrl;
-    this.name = name;
-  }
-}
-
 class Resume {
   constructor(id, title, start_date, end_date, place, description) {
     this.id = id;
@@ -46,4 +38,4 @@ class Coordinate {
   }
 }
 
-export { Link, Social, Technology, Education, Experience, Coordinate };
+export { Link, Social, Education, Experience, Coordinate };

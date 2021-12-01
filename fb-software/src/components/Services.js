@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
- 
+
 import { useGlobalContext } from "../context";
 import Error from "./Error";
 import Loading from "./Loading";
@@ -62,7 +62,7 @@ const Wrapper = styled.section`
   }
 
   .services-center {
-    margin-top: 2rem;
+    margin-top: 4rem;
     display: grid;
     gap: 2.5rem;
   }
@@ -70,15 +70,15 @@ const Wrapper = styled.section`
   .single-service {
     background-color: var(--clr-primary-9);
     padding: 70px 25px 65px 25px;
-    border: 0.25rem solid var(--clr-primary-3);
-    border-radius: var(radius);
+    border-radius: var(--radius);
     margin-bottom: 20px;
     cursor: pointer;
     box-shadow: var(--dark-shadow);
     transition: var(--transition);
 
     &:hover {
-      background-color: var(--clr-accent-8);
+      background-color: var(--clr-primary-8);
+      transform: scale(1.1);
     }
   }
 
@@ -106,15 +106,14 @@ const Wrapper = styled.section`
     }
 
     p {
-      font-size: 1rem;
+      font-weight: 600;
       margin-bottom: 0;
       -webkit-line-clamp: 4;
       -webkit-box-orient: vertical;
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
-      text-align: justify;
-      text-justify: inter-word;
+      text-align: center;
     }
   }
 
@@ -129,6 +128,16 @@ const Wrapper = styled.section`
     .section-center {
       transform: translateY(5rem);
     }
+
+    .services-center {
+      margin-top: 0;
+    }
   }
+
+  @media (max-width: 480px) {
+    .single-service:hover {
+      transform: none;
+    }
+  } ;
 `;
 export default Services;
