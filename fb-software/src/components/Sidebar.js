@@ -2,10 +2,10 @@ import React from "react";
 import { FaTimes } from "react-icons/fa";
 import styled from "styled-components";
 
-import logo from "../assets/logo.png";
 import { LINKS } from "../utils/constants";
 import { scrollTop, scrollToElement } from "../utils/helpers";
 import { useGlobalContext } from "../context";
+import Logo from "./Logo";
 import Socials from "./Socials";
 import CustomLink from "./CustomLink";
 
@@ -27,11 +27,10 @@ const Sidebar = ({ showLinks }) => {
         className={`${isSidebarOpen ? "sidebar show-sidebar" : "sidebar"}`}
       >
         <div className="sidebar-header">
-          <img
-            src={logo}
-            alt="comfy sloth"
-            className="logo"
-            onClick={() => handleClick()}
+          <Logo
+            onClickHandler={() => {
+              handleClick();
+            }}
           />
 
           <button type="button" className="close-btn" onClick={closeSidebar}>
@@ -64,6 +63,7 @@ const Sidebar = ({ showLinks }) => {
 
 const SidebarContainer = styled.div`
   text-align: center;
+
   .sidebar-header {
     display: flex;
     justify-content: space-between;
@@ -102,7 +102,7 @@ const SidebarContainer = styled.div`
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 120%;
     background: var(--clr-white);
     transition: var(--transition);
     transform: translate(-100%);

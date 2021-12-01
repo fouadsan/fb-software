@@ -3,10 +3,10 @@ import styled from "styled-components";
 import { FaBars } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
-import logo from "../assets/logo.png";
 import { LINKS } from "../utils/constants";
 import { scrollTop, scrollToElement } from "../utils/helpers";
 import { useGlobalContext } from "../context";
+import Logo from "./Logo";
 import Socials from "./Socials";
 import CustomLink from "./CustomLink";
 
@@ -42,7 +42,7 @@ const Nav = ({ showLinks, setShowLinks }) => {
               scrollTop();
             }}
           >
-            <img src={logo} alt="fouad b" />
+            <Logo onClickHandler={null} />
           </NavLink>
           {showLinks && (
             <button type="button" className="nav-toggle" onClick={openSidebar}>
@@ -94,10 +94,6 @@ const NavContainer = styled.nav`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    img {
-      width: 175px;
-      margin-left: -15px;
-    }
   }
 
   .nav-toggle {
