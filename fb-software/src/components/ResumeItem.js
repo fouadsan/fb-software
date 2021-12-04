@@ -1,14 +1,55 @@
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import styled from "styled-components";
+import moment from "moment";
 
 function ResumeItem({ experience }) {
-  const { title, start_date, end_date, place, description } = experience;
+  const { title, type, start_date, end_date, place, description } = experience;
+  const [newDate, setNewDate] = useState({});
+
+  const getDateWithoutTimestamp = useCallback(
+    (enteredDate) => {
+      let newDateWithoutTimeStamp = enteredDate.toDate();
+      if (type === "education") {
+        newDateWithoutTimeStamp = newDateWithoutTimeStamp
+          .getFullYear()
+          .toString()
+          .trim();
+      } else {
+        newDateWithoutTimeStamp = moment(newDateWithoutTimeStamp).format(
+          "MMMM, YYYY"
+        );
+      }
+
+      return newDateWithoutTimeStamp;
+    },
+    [type]
+  );
+
+  useEffect(() => {
+    let new_end_date;
+    const new_start_date = getDateWithoutTimestamp(start_date);
+
+    if (typeof end_date === "string") {
+      new_end_date = end_date;
+    } else {
+      new_end_date = getDateWithoutTimestamp(end_date);
+    }
+
+    setNewDate({
+      new_start_date,
+      new_end_date,
+    });
+  }, [getDateWithoutTimestamp, start_date, end_date]);
+
   return (
     <Wrapper>
       <h4>{title}</h4>
-      <h5>
-        {start_date} - {end_date}
-      </h5>
+      {newDate && (
+        <h5>
+          {newDate.new_start_date} - {newDate.new_end_date}
+        </h5>
+      )}
+
       <p>
         <em>{place}</em>
       </p>

@@ -55,7 +55,12 @@ function ContactForm() {
         /* and other goodies */
       }) => (
         <Wrapper>
-          <form className="form" onSubmit={handleSubmit}>
+          <form
+            action="https://formspree.io/f/xrgjzwpl"
+            method="POST"
+            className="form"
+            onSubmit={handleSubmit}
+          >
             <div className="form-group">
               <div className="form-control">
                 <input

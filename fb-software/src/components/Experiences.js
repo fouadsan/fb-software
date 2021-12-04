@@ -5,6 +5,7 @@ import ResumeItem from "./ResumeItem";
 import { useGlobalContext } from "../context";
 import Error from "./Error";
 import Loading from "./Loading";
+import { compare } from "../utils/helpers";
 
 function Experiences() {
   const {
@@ -20,7 +21,8 @@ function Experiences() {
     let educationArr = [];
     let experiencesArr = [];
 
-    experiences.forEach((item) => {
+    const newExperiences = experiences.sort(compare);
+    newExperiences.forEach((item) => {
       if (item.type === "education") {
         educationArr.push(item);
       } else {
@@ -57,10 +59,17 @@ function Experiences() {
             })}
           </div>
         )}
-
         {expos.length > 0 && (
           <div className="resume">
-            <h3>professional experience</h3>
+            <h3>certifications</h3>
+            {expos.map((exp) => {
+              return <ResumeItem key={exp.id} experience={exp} />;
+            })}
+          </div>
+        )}
+        {expos.length > 0 && (
+          <div className="resume">
+            <h3>experience</h3>
             {expos.map((exp) => {
               return <ResumeItem key={exp.id} experience={exp} />;
             })}
@@ -77,19 +86,32 @@ const Wrapper = styled.div`
   .section-center {
     margin-top: 4rem;
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
 
-    @media screen and (max-width: 657px) {
-      flex-direction: column;
-
-      .resume {
-        margin-bottom: 1rem;
-      }
+    .resume {
+      margin-bottom: 1rem;
     }
   }
 
   h3 {
     padding-top: 1rem;
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
+  }
+
+  @media screen and (min-width: 1200px) {
+    .section-center {
+      flex-direction: row;
+
+      .resume {
+        margin-bottom: 1rem;
+      }
+    }
+
+    h3 {
+      padding-top: 2rem;
+    }
   }
 `;
 
