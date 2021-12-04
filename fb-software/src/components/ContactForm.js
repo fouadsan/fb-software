@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Formik } from "formik";
 import styled from "styled-components";
+import emailjs from "emailjs-com";
 
 function ContactForm() {
   const [isLoading, setLoading] = useState(false);
+
+  const form = useRef();
 
   return (
     <Formik
@@ -29,19 +32,33 @@ function ContactForm() {
         if (!values.message) {
           errors.message = "Required";
         } else if (values.message.length < 20) {
-          console.log();
           errors.message = "Your message is too short";
         }
 
         return errors;
       }}
-      onSubmit={(values, { setSubmitting }) => {
+      onSubmit={async (_, { setSubmitting, resetForm }) => {
         setLoading(true);
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-          setLoading(false);
-        }, 400);
+        // alert(JSON.stringify(values, null, 2));
+        setSubmitting(false);
+        try {
+          const response = await emailjs.sendForm(
+            "service_e4v83qr",
+            "template_5gk20tf",
+            form.current,
+            "user_yY5XG1I3EC4jADAQINPfF"
+          );
+          resetForm();
+          if (response.status === 200) {
+            alert("Your email has been sent, check your email!");
+          } else {
+            alert("Somthing went wrong, please try again later!");
+          }
+        } catch (error) {
+          alert(error);
+        }
+
+        setLoading(false);
       }}
     >
       {({
@@ -55,12 +72,7 @@ function ContactForm() {
         /* and other goodies */
       }) => (
         <Wrapper>
-          <form
-            action="https://formspree.io/f/xrgjzwpl"
-            method="POST"
-            className="form"
-            onSubmit={handleSubmit}
-          >
+          <form ref={form} className="form" onSubmit={handleSubmit}>
             <div className="form-group">
               <div className="form-control">
                 <input
