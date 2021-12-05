@@ -13,12 +13,9 @@ function Contact() {
   let Scroll = require("react-scroll");
   let Element = Scroll.Element;
 
-  if (isModalOpen) {
-    return <Modal />;
-  }
-
   return (
     <Element name="contact">
+      {isModalOpen && <Modal />}
       <Wrapper className="page-100">
         <div className="title">
           <h2>contact me</h2>

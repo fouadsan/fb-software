@@ -24,8 +24,9 @@ import {
 
 const initialState = {
   isSidebarOpen: false,
-  isModalOpen: true,
+  isModalOpen: false,
   modal_content: "",
+  modal_content_type: "",
   projects_loading: false,
   projects_error: false,
   projects: [],
@@ -54,8 +55,8 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: SIDEBAR_CLOSE });
   };
 
-  const openModal = (message) => {
-    dispatch({ type: MODAL_OPEN, payload: message });
+  const openModal = (message, type) => {
+    dispatch({ type: MODAL_OPEN, payload: { message, type } });
   };
 
   const closeModal = () => {

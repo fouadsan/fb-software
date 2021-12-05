@@ -45,6 +45,7 @@ function ContactForm() {
         // alert(JSON.stringify(values, null, 2));
         setSubmitting(false);
         let message;
+        let type;
         try {
           const response = await emailjs.sendForm(
             "service_e4v83qr",
@@ -55,19 +56,19 @@ function ContactForm() {
           resetForm();
 
           if (response.status === 200) {
-            message = "Your email has been sent, check your email!";
-            alert("Your email has been sent, check your email!");
+            message = "your message has been sent!";
+            type = "success";
           } else {
-            message = "Somthing went wrong, please try again later!";
-            alert("Somthing went wrong, please try again later!");
+            type = "error";
+            message = "oops, somthing went wrong";
           }
         } catch (error) {
+          type = "error";
           message = error.message;
-          alert(error);
         }
 
         setLoading(false);
-        openModal(message);
+        openModal(message, type);
       }}
     >
       {({

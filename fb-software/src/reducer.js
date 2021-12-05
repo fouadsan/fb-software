@@ -26,10 +26,20 @@ const reducer = (state, action) => {
       return { ...state, isSidebarOpen: false };
 
     case MODAL_OPEN:
-      return { ...state, isModalOpen: true, modal_content: action.payload };
+      return {
+        ...state,
+        isModalOpen: true,
+        modal_content: action.payload.message,
+        modal_content_type: action.payload.type,
+      };
 
     case MODAL_CLOSE:
-      return { ...state, isModalOpen: false };
+      return {
+        ...state,
+        isModalOpen: false,
+        modal_content: "",
+        modal_content_type: "",
+      };
 
     case GET_PROJECTS_BEGIN:
       return { ...state, projects_loading: true };
