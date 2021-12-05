@@ -59,14 +59,7 @@ function Experiences() {
             })}
           </div>
         )}
-        {expos.length > 0 && (
-          <div className="resume">
-            <h3>certifications</h3>
-            {expos.map((exp) => {
-              return <ResumeItem key={exp.id} experience={exp} />;
-            })}
-          </div>
-        )}
+
         {expos.length > 0 && (
           <div className="resume">
             <h3>experience</h3>
@@ -106,6 +99,7 @@ const Wrapper = styled.div`
 
       .resume {
         margin-bottom: 1rem;
+        max-width: 450px;
       }
     }
 
