@@ -3,7 +3,10 @@ import { Formik } from "formik";
 import styled from "styled-components";
 import emailjs from "emailjs-com";
 
+import { useGlobalContext } from "../context";
+
 function ContactForm() {
+  const { openModal } = useGlobalContext();
   const [isLoading, setLoading] = useState(false);
 
   const form = useRef();
@@ -41,6 +44,7 @@ function ContactForm() {
         setLoading(true);
         // alert(JSON.stringify(values, null, 2));
         setSubmitting(false);
+        let message;
         try {
           const response = await emailjs.sendForm(
             "service_e4v83qr",
@@ -49,16 +53,21 @@ function ContactForm() {
             "user_yY5XG1I3EC4jADAQINPfF"
           );
           resetForm();
+
           if (response.status === 200) {
+            message = "Your email has been sent, check your email!";
             alert("Your email has been sent, check your email!");
           } else {
+            message = "Somthing went wrong, please try again later!";
             alert("Somthing went wrong, please try again later!");
           }
         } catch (error) {
+          message = error.message;
           alert(error);
         }
 
         setLoading(false);
+        openModal(message);
       }}
     >
       {({

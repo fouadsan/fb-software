@@ -4,10 +4,18 @@ import styled from "styled-components";
 import ContactForm from "./ContactForm";
 import CoordinateItem from "./CoordinateItem";
 import { COORDINATES } from "../utils/constants";
+import { useGlobalContext } from "../context";
+import Modal from "./Modal";
 
 function Contact() {
+  const { isModalOpen } = useGlobalContext();
+
   let Scroll = require("react-scroll");
   let Element = Scroll.Element;
+
+  if (isModalOpen) {
+    return <Modal />;
+  }
 
   return (
     <Element name="contact">

@@ -1,6 +1,8 @@
 import {
   SIDEBAR_OPEN,
   SIDEBAR_CLOSE,
+  MODAL_OPEN,
+  MODAL_CLOSE,
   GET_PROJECTS_BEGIN,
   GET_PROJECTS_SUCCESS,
   GET_PROJECTS_ERROR,
@@ -22,6 +24,12 @@ const reducer = (state, action) => {
 
     case SIDEBAR_CLOSE:
       return { ...state, isSidebarOpen: false };
+
+    case MODAL_OPEN:
+      return { ...state, isModalOpen: true, modal_content: action.payload };
+
+    case MODAL_CLOSE:
+      return { ...state, isModalOpen: false };
 
     case GET_PROJECTS_BEGIN:
       return { ...state, projects_loading: true };

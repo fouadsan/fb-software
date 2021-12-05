@@ -6,6 +6,8 @@ import reducer from "./reducer";
 import {
   SIDEBAR_OPEN,
   SIDEBAR_CLOSE,
+  MODAL_OPEN,
+  MODAL_CLOSE,
   GET_PROJECTS_BEGIN,
   GET_PROJECTS_SUCCESS,
   GET_PROJECTS_ERROR,
@@ -22,6 +24,8 @@ import {
 
 const initialState = {
   isSidebarOpen: false,
+  isModalOpen: true,
+  modal_content: "",
   projects_loading: false,
   projects_error: false,
   projects: [],
@@ -48,6 +52,14 @@ export const AppProvider = ({ children }) => {
 
   const closeSidebar = () => {
     dispatch({ type: SIDEBAR_CLOSE });
+  };
+
+  const openModal = (message) => {
+    dispatch({ type: MODAL_OPEN, payload: message });
+  };
+
+  const closeModal = () => {
+    dispatch({ type: MODAL_CLOSE });
   };
 
   const fetchData = async (actions, coll) => {
@@ -133,6 +145,8 @@ export const AppProvider = ({ children }) => {
         ...state,
         openSidebar,
         closeSidebar,
+        openModal,
+        closeModal,
       }}
     >
       {children}
