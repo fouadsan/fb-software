@@ -7,10 +7,11 @@ class Link {
 }
 
 class Social {
-  constructor(id, icon, title) {
+  constructor(id, icon, title, link) {
     this.id = id;
     this.icon = icon;
     this.title = title;
+    this.link = link;
   }
 }
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import styled from "styled-components";
 
-import ResumeItem from "./ResumeItem";
+import SetExperience from "./SetExperience";
 import { useGlobalContext } from "../context";
 import Error from "./Error";
 import Loading from "./Loading";
@@ -16,20 +16,25 @@ function Experiences() {
 
   const [education, setEducation] = useState([]);
   const [expos, setExpos] = useState([]);
+  const [certifications, setCertifications] = useState([]);
 
   const filterExperiences = useCallback(() => {
     let educationArr = [];
     let experiencesArr = [];
+    let certificationsArr = [];
 
     const newExperiences = experiences.sort(compare);
     newExperiences.forEach((item) => {
       if (item.type === "education") {
         educationArr.push(item);
-      } else {
+      } else if (item.type === "experience") {
         experiencesArr.push(item);
+      } else {
+        certificationsArr.push(item);
       }
       setEducation(educationArr);
       setExpos(experiencesArr);
+      setCertifications(certificationsArr);
     });
   }, [experiences]);
 
@@ -52,29 +57,12 @@ function Experiences() {
       </div>
       <div className="section-center">
         {education.length > 0 && (
-          <div className="resume">
-            <h3>education</h3>
-            {education.map((exp) => {
-              return <ResumeItem key={exp.id} experience={exp} />;
-            })}
-          </div>
+          <SetExperience exp={education} title="education" />
         )}
-        {expos.length > 0 && (
-          <div className="resume">
-            <h3>certifications</h3>
-            {expos.map((exp) => {
-              return <ResumeItem key={exp.id} experience={exp} />;
-            })}
-          </div>
+        {certifications.length > 0 && (
+          <SetExperience exp={certifications} title="certifications" />
         )}
-        {expos.length > 0 && (
-          <div className="resume">
-            <h3>experience</h3>
-            {expos.map((exp) => {
-              return <ResumeItem key={exp.id} experience={exp} />;
-            })}
-          </div>
-        )}
+        {expos.length > 0 && <SetExperience exp={expos} title="experience" />}
       </div>
     </Wrapper>
   );
@@ -92,6 +80,7 @@ const Wrapper = styled.div`
 
     .resume {
       margin-bottom: 1rem;
+      width: 100%;
     }
   }
 
@@ -105,7 +94,7 @@ const Wrapper = styled.div`
       flex-direction: row;
 
       .resume {
-        margin-bottom: 1rem;
+        margin-right: 1rem;
       }
     }
 

@@ -43,7 +43,14 @@ function ResumeItem({ experience }) {
 
   return (
     <Wrapper>
-      <h4>{title}</h4>
+      {type === "certification" ? (
+        <a href="#">
+          <h4>{title}</h4>
+        </a>
+      ) : (
+        <h4>{title}</h4>
+      )}
+
       {newDate && (
         <h5>
           {newDate.new_start_date} - {newDate.new_end_date}
@@ -64,6 +71,14 @@ const Wrapper = styled.div`
   padding: 0 0 2rem 2rem;
   border-left: 2px solid var(--clr-primary-3);
   position: relative;
+
+  a {
+    color: red;
+
+    &:hover {
+      color: var(--clr-primary-1);
+    }
+  }
 
   h4 {
     font-size: 1.2rem;

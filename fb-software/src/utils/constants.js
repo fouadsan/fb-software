@@ -23,10 +23,25 @@ export const LINKS = [
 ];
 
 export const SOCIALS = [
-  new Social(1, <FaFacebookSquare />, "facebook"),
-  new Social(2, <FaLinkedin />, "linkedin"),
-  new Social(3, <FaTwitterSquare />, "twitter"),
-  new Social(4, <FaGithub />, "github"),
+  new Social(
+    1,
+    <FaFacebookSquare />,
+    "facebook",
+    "https://www.facebook.com/people/Fou-Ad/100008522377284"
+  ),
+  new Social(
+    2,
+    <FaLinkedin />,
+    "linkedin",
+    "https://www.linkedin.com/in/fouad-b-7a2185208/"
+  ),
+  new Social(
+    3,
+    <FaTwitterSquare />,
+    "twitter",
+    "https://twitter.com/FouAd44261068"
+  ),
+  new Social(4, <FaGithub />, "github", "https://github.com/fouadsan"),
 ];
 
 export const EDUCATION = [
@@ -89,6 +104,5 @@ export const COORDINATES = [
   new Coordinate(3, <FaPhone />, "phone", "+213 561 587 780"),
 ];
 
-// export const projects_url = "https://course-api.com/react-store-products";
-
-// export const single_product_url = `https://course-api.com/react-store-single-product?id=`
+export const cvUrl =
+  "https://firebasestorage.googleapis.com/v0/b/react-portfolio-3169d.appspot.com/o/files%2FWeb%20%26%20Mobile%20Developer.pdf?alt=media&token=0930976f-433d-4ad5-862d-52317e6781d4";

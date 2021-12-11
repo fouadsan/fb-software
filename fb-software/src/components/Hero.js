@@ -4,6 +4,7 @@ import Typical from "react-typical";
 
 import Socials from "./Socials";
 import heroImg from "../assets/hero-dev.jpg";
+import { cvUrl } from "../utils/constants";
 
 const Hero = () => {
   let Scroll = require("react-scroll");
@@ -19,7 +20,7 @@ const Hero = () => {
           </div>
           <div className="text-paragraph">
             <p>
-              A{" "}
+              A
               <Typical
                 steps={[
                   "web developer.",
@@ -37,7 +38,7 @@ const Hero = () => {
           </div>
           <HeroBtnsContainer>
             <Socials />
-            <a href="/" className="btn hero-btn">
+            <a href={cvUrl} target="_blank" className="btn hero-btn">
               View Cv
             </a>
           </HeroBtnsContainer>
