@@ -27,10 +27,10 @@ const ScrollArrow = () => {
 
 const Arrow = styled(FaArrowCircleUp)`
   position: fixed;
-  width: 100%;
   bottom: 20px;
-  left: 44vw;
+  right: 5vw;
   align-items: center;
+  width: 40px;
   height: 40px;
   justify-content: center;
   z-index: 1;
@@ -44,7 +44,6 @@ const Arrow = styled(FaArrowCircleUp)`
   }
 
   @media (max-width: 667px) {
-    left: 35vw;
     height: 35px;
   }
 `;

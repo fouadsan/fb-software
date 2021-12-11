@@ -99,6 +99,7 @@ const Wrapper = styled.div`
   ul {
     padding-left: 20px;
     margin-right: 20px;
+    list-style: inside;
 
     li {
       padding-bottom: 10px;
