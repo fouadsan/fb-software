@@ -139,7 +139,7 @@ const Carousel = styled(Slider)`
       width: 90%;
       height: 90%;
       object-fit: contain;
-      opacity: 0.7;
+      opacity: 0.8;
       transition: var(--transition);
       &:hover {
         border-color: var(--clr-primary-4);

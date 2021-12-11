@@ -1,14 +1,16 @@
 import React, { useState, useCallback } from "react";
 import styled from "styled-components";
-import ImageViewer from "react-simple-image-viewer";
+import Viewer from "react-viewer";
 import { FaEye } from "react-icons/fa";
 
 function Projects({ items }) {
   const [currentImage, setCurrentImage] = useState(0);
   const [isViewerOpen, setIsViewerOpen] = useState(false);
+  const [projectImages, setProjectImages] = useState();
 
-  const openImageViewer = useCallback((index) => {
-    setCurrentImage(index);
+  const openImageViewer = useCallback((images) => {
+    setProjectImages(images);
+    setCurrentImage(0);
     setIsViewerOpen(true);
   }, []);
 
@@ -20,37 +22,46 @@ function Projects({ items }) {
   return (
     <Wrapper className="section-center">
       {items.map((menuItem) => {
-        const { id, title, images, description } = menuItem;
-
+        const { id, title, category, images, description } = menuItem;
+        let newImages = [];
+        images.map((image) => {
+          return newImages.push({ src: image, alt: title });
+        });
         return (
           <article key={id} className="menu-item">
             <div className="project-imgs">
-              {images.map((src, index) => (
-                <img src={src} className="thumb" key={index} alt={title} />
-              ))}
-
-              {isViewerOpen && (
-                <ImageViewer
-                  src={images}
-                  currentIndex={currentImage}
-                  disableScroll={false}
-                  closeOnClickOutside={true}
-                  onClose={closeImageViewer}
+              {newImages.map((image, index) => (
+                <img
+                  src={image.src}
+                  className="thumb"
+                  key={index}
+                  alt={image.title}
                 />
-              )}
+              ))}
 
               <button
                 type="button"
                 className="link"
-                onClick={() => openImageViewer(0)}
+                onClick={() => openImageViewer(newImages)}
               >
                 <FaEye />
               </button>
+
+              <Viewer
+                visible={isViewerOpen}
+                images={projectImages}
+                activeIndex={currentImage}
+                onClose={closeImageViewer}
+                noImgDetails={true}
+                noNavbar={true}
+                showTotal={false}
+                loop={false}
+              />
             </div>
             <div className="item-info">
               <header>
                 <h4>{title}</h4>
-                <h4 className="price">mobile</h4>
+                <h4 className="category">{category}</h4>
               </header>
               <p className="item-desc">{description}</p>
             </div>
@@ -136,7 +147,7 @@ const Wrapper = styled.div`
     font-size: 1rem;
     margin-bottom: 0.5rem;
   }
-  .price {
+  .category {
     color: var(--clr-gold);
   }
   .item-desc {
@@ -158,10 +169,6 @@ const Wrapper = styled.div`
       max-width: 40rem;
     }
 
-    .thumb {
-      height: 175px;
-    }
-
     .item-desc {
       width: 300px;
     }
@@ -170,10 +177,6 @@ const Wrapper = styled.div`
   @media screen and (min-width: 1200px) {
     width: 95vw;
     grid-template-columns: 1fr 1fr;
-
-    .thumb {
-      height: 150px;
-    }
   }
 
   @media screen and (max-width: 767px) {
