@@ -57,28 +57,10 @@ function Experiences() {
       </div>
       <div className="section-center">
         {education.length > 0 && (
-<<<<<<< HEAD
           <SetExperience exp={education} title="education" />
         )}
         {certifications.length > 0 && (
           <SetExperience exp={certifications} title="certifications" />
-=======
-          <div className="resume">
-            <h3>education</h3>
-            {education.map((exp) => {
-              return <ResumeItem key={exp.id} experience={exp} />;
-            })}
-          </div>
-        )}
-
-        {expos.length > 0 && (
-          <div className="resume">
-            <h3>experience</h3>
-            {expos.map((exp) => {
-              return <ResumeItem key={exp.id} experience={exp} />;
-            })}
-          </div>
->>>>>>> dd1ad92fd96f7f2f74f49a31a171af3afd78f145
         )}
         {expos.length > 0 && <SetExperience exp={expos} title="experience" />}
       </div>
@@ -112,12 +94,7 @@ const Wrapper = styled.div`
       flex-direction: row;
 
       .resume {
-<<<<<<< HEAD
         margin-right: 1rem;
-=======
-        margin-bottom: 1rem;
-        max-width: 450px;
->>>>>>> dd1ad92fd96f7f2f74f49a31a171af3afd78f145
       }
     }
 

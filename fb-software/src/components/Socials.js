@@ -13,6 +13,7 @@ function Socials() {
             key={id}
             href={link}
             target="_blank"
+            rel="noopener noreferrer"
             className="social-btn"
             title={title}
           >

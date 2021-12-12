@@ -44,7 +44,7 @@ function ResumeItem({ experience }) {
   return (
     <Wrapper>
       {type === "certification" ? (
-        <a href="#">
+        <a href="#"  target="_blank" rel="noopener noreferrer">
           <h4>{title}</h4>
         </a>
       ) : (
@@ -109,6 +109,7 @@ const Wrapper = styled.div`
       -webkit-box-orient: vertical;
       overflow: hidden;
       text-overflow: ellipsis;
+      text-transform: capitalize;
     }
   }
 

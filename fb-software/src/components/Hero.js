@@ -38,7 +38,7 @@ const Hero = () => {
           </div>
           <HeroBtnsContainer>
             <Socials />
-            <a href={cvUrl} target="_blank" className="btn hero-btn">
+            <a href={cvUrl}  target="_blank" rel="noopener noreferrer" className="btn hero-btn">
               View Cv
             </a>
           </HeroBtnsContainer>
