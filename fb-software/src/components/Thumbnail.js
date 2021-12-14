@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-function Thumbnail({ image }) {
+function Thumbnail({ imageUrl }) {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   return (
     <Wrapper
       show={isImageLoaded}
-      src={image}
+      src={imageUrl}
       onLoad={() => setIsImageLoaded(true)}
       className="thumb"
       alt="project thumbnail"
