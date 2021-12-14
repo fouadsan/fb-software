@@ -26,7 +26,7 @@ function Projects({ items }) {
         return (
           <article key={id} className="menu-item">
             <div className="project-imgs">
-              <Thumbnail image={thumb} />
+              <Thumbnail imageUrl={thumb} />
               <button
                 type="button"
                 className="link"
