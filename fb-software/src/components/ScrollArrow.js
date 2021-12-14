@@ -33,11 +33,12 @@ const Arrow = styled(FaArrowCircleUp)`
   width: 40px;
   height: 40px;
   justify-content: center;
+  opacity: 0.5;
   z-index: 1;
   cursor: pointer;
   animation: fadeIn 0.3s;
   transition: opacity 0.4s;
-  opacity: 0.5;
+  
 
   &:hover {
     opacity: 1;

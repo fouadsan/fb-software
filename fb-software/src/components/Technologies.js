@@ -6,7 +6,6 @@ import "slick-carousel/slick/slick-theme.css";
 
 import { useGlobalContext } from "../context";
 import Error from "./Error";
-import Loading from "./Loading";
 
 function Technologies() {
   const {
@@ -52,8 +51,9 @@ function Technologies() {
   };
 
   if (loading) {
-    return <Loading />;
+    return null;
   }
+
   if (error) {
     return <Error />;
   }

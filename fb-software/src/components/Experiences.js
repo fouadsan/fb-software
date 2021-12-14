@@ -4,7 +4,6 @@ import styled from "styled-components";
 import SetExperience from "./SetExperience";
 import { useGlobalContext } from "../context";
 import Error from "./Error";
-import Loading from "./Loading";
 import { compare } from "../utils/helpers";
 
 function Experiences() {
@@ -43,8 +42,9 @@ function Experiences() {
   }, [filterExperiences]);
 
   if (loading) {
-    return <Loading />;
+    return null;
   }
+
   if (error) {
     return <Error />;
   }

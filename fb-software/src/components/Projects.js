@@ -1,56 +1,42 @@
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Viewer from "react-viewer";
 import { FaEye } from "react-icons/fa";
 
-function Projects({ items }) {
-  const [currentImage, setCurrentImage] = useState(0);
-  const [isViewerOpen, setIsViewerOpen] = useState(false);
-  const [projectImages, setProjectImages] = useState();
+import Thumbnail from "./Thumbnail";
 
-  const openImageViewer = useCallback((images) => {
+function Projects({ items }) {
+  const [isViewerOpen, setIsViewerOpen] = useState(false);
+  const [projectImages, setProjectImages] = useState([]);
+
+  const openImageViewer = (images) => {
     setProjectImages(images);
-    setCurrentImage(0);
     setIsViewerOpen(true);
-  }, []);
+  };
 
   const closeImageViewer = () => {
-    setCurrentImage(0);
     setIsViewerOpen(false);
+    setProjectImages([]);
   };
 
   return (
     <Wrapper className="section-center">
       {items.map((menuItem) => {
-        const { id, title, category, images, description } = menuItem;
-        let newImages = [];
-        images.map((image) => {
-          return newImages.push({ src: image, alt: title });
-        });
+        const { id, title, category, thumb, images, description } = menuItem;
         return (
           <article key={id} className="menu-item">
             <div className="project-imgs">
-              {newImages.map((image, index) => (
-                <img
-                  src={image.src}
-                  className="thumb"
-                  key={index}
-                  alt={image.title}
-                />
-              ))}
-
+              <Thumbnail image={thumb} />
               <button
                 type="button"
                 className="link"
-                onClick={() => openImageViewer(newImages)}
+                onClick={() => openImageViewer(images)}
               >
                 <FaEye />
               </button>
-
               <Viewer
-                visible={isViewerOpen}
                 images={projectImages}
-                activeIndex={currentImage}
+                visible={isViewerOpen}
                 onClose={closeImageViewer}
                 noImgDetails={true}
                 noNavbar={true}
@@ -94,6 +80,7 @@ const Wrapper = styled.div`
     border: 0.25rem solid var(--clr-primary-3);
     border-radius: var(--radius);
     overflow: hidden;
+    background-color: var(--clr-primary-8);
 
     &:hover {
       .thumb {
@@ -103,13 +90,6 @@ const Wrapper = styled.div`
         opacity: 1;
       }
     }
-  }
-
-  .thumb {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    transition: var(--transition);
   }
 
   .link {

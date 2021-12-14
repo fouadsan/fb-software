@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 import { useGlobalContext } from "../context";
 import Error from "./Error";
-import Loading from "./Loading";
 
 const Services = () => {
   let Scroll = require("react-scroll");
@@ -16,8 +15,9 @@ const Services = () => {
   } = useGlobalContext();
 
   if (loading) {
-    return <Loading />;
+    return null;
   }
+
   if (error) {
     return <Error />;
   }

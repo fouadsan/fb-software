@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Social, Education, Experience, Coordinate } from "./models";
+import { Link, Social, Coordinate } from "./models";
 
 import {
   FaHome,
@@ -42,60 +42,6 @@ export const SOCIALS = [
     "https://twitter.com/FouAd44261068"
   ),
   new Social(4, <FaGithub />, "github", "https://github.com/fouadsan"),
-];
-
-export const EDUCATION = [
-  new Education(
-    1,
-    "Master Degree in Cyber Security",
-    "10/10/2020",
-    "10/10/2020",
-    "el bez",
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ea. Perferendis corrupti reiciendis nesciunt rerum velit autem unde numquam nisi"
-  ),
-  new Education(
-    2,
-    "React Complete course tutorials and projects",
-    "10/10/2020",
-    "10/10/2020",
-    "el bez",
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ea. Perferendis corrupti reiciendis nesciunt rerum velit autem unde numquam nisi"
-  ),
-  new Education(
-    3,
-    "webIcon",
-    "august, 2021",
-    "present",
-    "el bez",
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ea. Perferendis corrupti reiciendis nesciunt rerum velit autem unde numquam nisi"
-  ),
-];
-
-export const EXPERIENCES = [
-  new Experience(
-    1,
-    "webIcon",
-    "10/10/2020",
-    "10/10/2020",
-    "el bez",
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ea. Perferendis corrupti reiciendis nesciunt rerum velit autem unde numquam nisi"
-  ),
-  new Experience(
-    2,
-    "webIcon",
-    "10/10/2020",
-    "10/10/2020",
-    "el bez",
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ea. Perferendis corrupti reiciendis nesciunt rerum velit autem unde numquam nisi"
-  ),
-  new Experience(
-    3,
-    "webIcon",
-    "august, 2021",
-    "present",
-    "el bez",
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ea. Perferendis corrupti reiciendis nesciunt rerum velit autem unde numquam nisi"
-  ),
 ];
 
 export const COORDINATES = [
