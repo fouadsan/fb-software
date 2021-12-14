@@ -44,7 +44,7 @@ function ResumeItem({ experience }) {
   return (
     <Wrapper>
       {type === "certification" ? (
-        <a href="#"  target="_blank" rel="noopener noreferrer">
+        <a href="www.google.com"  target="_blank" rel="noopener noreferrer">
           <h4>{title}</h4>
         </a>
       ) : (
