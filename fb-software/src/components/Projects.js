@@ -36,7 +36,6 @@ function Projects({ items }) {
               </button>
               <Viewer
                 images={projectImages}
-                activeIndex={-1}
                 visible={isViewerOpen}
                 onClose={closeImageViewer}
                 noImgDetails={true}
