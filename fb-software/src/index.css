@@ -208,13 +208,31 @@ p {
   border-radius: var(--radius);
   border-color: transparent;
 }
+
 .btn:hover {
   color: var(--clr-primary-1);
   background: var(--clr-primary-7);
 }
+
+.close-btn {
+  font-size: 2rem;
+  background: transparent;
+  border-color: transparent;
+  color: var(--clr-primary-5);
+  transition: var(--transition);
+  cursor: pointer;
+  color: var(--clr-red-dark);
+  margin-top: 0.2rem;
+}
+
+.close-btn:hover {
+  color: var(--clr-red-light);
+}
+
 .title {
   text-align: center;
 }
+
 .title .underline {
   width: 6rem;
   height: 0.25rem;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Viewer from "react-viewer";
+import ImageViewer from "./ImageViewer";
 import { FaEye } from "react-icons/fa";
 
 import Thumbnail from "./Thumbnail";
@@ -10,11 +10,13 @@ function Projects({ items }) {
   const [projectImages, setProjectImages] = useState([]);
 
   const openImageViewer = (images) => {
+    document.body.style.overflow = "hidden";
     setProjectImages(images);
     setIsViewerOpen(true);
   };
 
   const closeImageViewer = () => {
+    document.body.style.overflow = "visible";
     setIsViewerOpen(false);
     setProjectImages([]);
   };
@@ -34,15 +36,13 @@ function Projects({ items }) {
               >
                 <FaEye />
               </button>
-              <Viewer
-                images={projectImages}
-                visible={isViewerOpen}
-                onClose={closeImageViewer}
-                noImgDetails={true}
-                noNavbar={true}
-                showTotal={false}
-                loop={false}
-              />
+              {isViewerOpen && (
+                <ImageViewer
+                  images={projectImages}
+                  visible={isViewerOpen}
+                  onClose={closeImageViewer}
+                />
+              )}
             </div>
             <div className="item-info">
               <header>

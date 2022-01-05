@@ -72,21 +72,6 @@ const SidebarContainer = styled.div`
     overflow: hidden;
   }
 
-  .close-btn {
-    font-size: 2rem;
-    background: transparent;
-    border-color: transparent;
-    color: var(--clr-primary-5);
-    transition: var(--transition);
-    cursor: pointer;
-    color: var(--clr-red-dark);
-    margin-top: 0.2rem;
-  }
-
-  .close-btn:hover {
-    color: var(--clr-red-light);
-  }
-
   .logo {
     justify-self: center;
     width: 130px;
