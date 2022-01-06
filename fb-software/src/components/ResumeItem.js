@@ -74,7 +74,7 @@ const Wrapper = styled.div`
   position: relative;
 
   a {
-    color: red;
+    color: var(--clr-red-dark);
 
     &:hover {
       color: var(--clr-primary-1);

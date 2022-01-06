@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { FaTimes, FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
 
 function ImageViewer({ images, onClose }) {
@@ -37,12 +38,16 @@ function ImageViewer({ images, onClose }) {
         </button>
         <div className="image-container">
           {!isLoaded && <div className="loading"></div>}
-          <Image
-            show={isLoaded}
-            src={images[index].src}
-            alt={images[index].alt}
-            onLoad={() => setIsLoaded(true)}
-          />
+          <TransformWrapper>
+            <TransformComponent>
+              <Image
+                show={isLoaded}
+                src={images[index].src}
+                alt={images[index].alt}
+                onLoad={() => setIsLoaded(true)}
+              />
+            </TransformComponent>
+          </TransformWrapper>
         </div>
         <button
           type="button"
@@ -99,6 +104,7 @@ const Wrapper = styled.div`
     width: 100%;
     height: 100%;
     margin: 0 2rem;
+    cursor: zoom-in;
   }
 
   .loading {
@@ -108,8 +114,8 @@ const Wrapper = styled.div`
 
   @media screen and (min-width: 768px) {
     .container {
-      width: 60%;
-      height: 65%;
+      width: 50%;
+      height: 90%;
     }
   }
 `;
@@ -119,14 +125,6 @@ const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: contain;
-
-  @media screen and (min-width: 768px) {
-    transition: var(--transition);
-    cursor: zoom-in;
-
-    &:hover {
-      transform: scale(1.3);
-    }
   }
 `;
 
