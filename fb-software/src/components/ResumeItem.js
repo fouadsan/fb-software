@@ -3,7 +3,8 @@ import styled from "styled-components";
 import moment from "moment";
 
 function ResumeItem({ experience }) {
-  const { title, type, start_date, end_date, place, description } = experience;
+  const { title, type, start_date, end_date, place, description, url } =
+    experience;
   const [newDate, setNewDate] = useState({});
 
   const getDateWithoutTimestamp = useCallback(
@@ -44,7 +45,7 @@ function ResumeItem({ experience }) {
   return (
     <Wrapper>
       {type === "certification" ? (
-        <a href="www.google.com"  target="_blank" rel="noopener noreferrer">
+        <a href={url} target="_blank" rel="noopener noreferrer">
           <h4>{title}</h4>
         </a>
       ) : (

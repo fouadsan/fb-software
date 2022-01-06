@@ -71,11 +71,12 @@ const Wrapper = styled.div`
   animation: fadeIn 0.5s;
 
   .close {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
     display: flex;
     justify-content: flex-end;
     width: 100%;
-    margin-right: 5rem;
-    margin-bottom: 5rem;
   }
 
   .close-btn {

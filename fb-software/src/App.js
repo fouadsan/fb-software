@@ -1,11 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import WebFont from "webfontloader";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { HomePage, ErrorPage } from "./pages";
-import { Navbar, ScrollArrow, Sidebar, Footer } from "./components";
+import { Loading, Navbar, ScrollArrow, Sidebar, Footer } from "./components";
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
   const [showLinks, setShowLinks] = useState(true);
+
+  useEffect(() => {
+    WebFont.load({
+      google: {
+        families: ["Open Sans", "Indie Flower"],
+      },
+    });
+    setIsLoading(false);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="page-100">
+        <Loading />
+      </div>
+    );
+  }
 
   return (
     <Router>
