@@ -41,10 +41,10 @@ function References() {
 
   if (projectItems.length) {
     return (
-      <Element name="references">
+      <Element name="projects">
         <Wrapper className="page-100">
           <div className="title">
-            <h2>Some References</h2>
+            <h2>Some Projects</h2>
             <div className="underline"></div>
           </div>
           <Categories filterItems={filterItems} />
@@ -54,10 +54,10 @@ function References() {
     );
   } else {
     return (
-      <Element name="references">
+      <Element name="projects">
         <Wrapper className="page-100">
           <div className="title">
-            <h2>Some References</h2>
+            <h2>Some Projects</h2>
             <div className="underline"></div>
           </div>
           <Error />

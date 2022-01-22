@@ -17,7 +17,7 @@ import { GoLocation } from "react-icons/go";
 
 export const LINKS = [
   new Link(1, "home", <FaHome />),
-  new Link(2, "references", <FaFolderOpen />),
+  new Link(2, "projects", <FaFolderOpen />),
   new Link(3, "services", <FaFacebookSquare />),
   new Link(4, "contact", <FaPhoneSquareAlt />),
 ];
@@ -51,4 +51,4 @@ export const COORDINATES = [
 ];
 
 export const cvUrl =
-  "https://firebasestorage.googleapis.com/v0/b/react-portfolio-3169d.appspot.com/o/files%2FWeb%20%26%20Mobile%20Developer%20(eng-fr).pdf?alt=media&token=d165b456-fe09-4e40-b5f2-761f05d8b99b";
+  "chrome-extension://oemmndcbldboiebfnladdacbdfmadadm/https://firebasestorage.googleapis.com/v0/b/react-portfolio-3169d.appspot.com/o/files%2FWeb%20%26%20Mobile%20Developer%20(eng-fr).pdf?alt=media&token=27c3fc63-3ab7-4943-b9f2-5c1172d3cc2a";
