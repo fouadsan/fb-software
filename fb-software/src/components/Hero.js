@@ -27,8 +27,6 @@ const Hero = () => {
                   2000,
                   "mobile developer.",
                   2000,
-                  "cyber security engineer.",
-                  2000,
                   "professional Software Developer with 3 years of experience in Web & Mobile development.",
                   10000,
                 ]}
