@@ -51,4 +51,4 @@ export const COORDINATES = [
 ];
 
 export const cvUrl =
-  "chrome-extension://oemmndcbldboiebfnladdacbdfmadadm/https://firebasestorage.googleapis.com/v0/b/react-portfolio-3169d.appspot.com/o/files%2FWeb%20%26%20Mobile%20Developer%20(eng-fr).pdf?alt=media&token=27c3fc63-3ab7-4943-b9f2-5c1172d3cc2a";
+  "https://firebasestorage.googleapis.com/v0/b/react-portfolio-3169d.appspot.com/o/files%2FWeb%20%26%20Mobile%20Developer%20(eng-fr).pdf?alt=media&token=27c3fc63-3ab7-4943-b9f2-5c1172d3cc2a";
