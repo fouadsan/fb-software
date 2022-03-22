@@ -52,7 +52,7 @@ function Experiences() {
   return (
     <Wrapper className="page-100">
       <div className="title">
-        <h2>my experience</h2>
+        <h2>my resume</h2>
         <div className="underline"></div>
       </div>
       <div className="section-center">

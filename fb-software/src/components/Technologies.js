@@ -38,6 +38,7 @@ function Technologies() {
           slidesToShow: 2,
           slidesToScroll: 1,
           initialSlide: 1,
+          dots: false,
         },
       },
       {
@@ -45,6 +46,7 @@ function Technologies() {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          dots: false,
         },
       },
     ],

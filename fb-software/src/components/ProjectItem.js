@@ -47,7 +47,7 @@ function ProjectItem({ title, category, thumb, images, description }) {
           <h4 className="category">{category}</h4>
         </header>
         <p className="item-desc">{description}</p>
-        {description.length > 70 && (
+        {description.length > 80 && (
           <button
             type="button"
             className="btn btn-expand"
@@ -74,14 +74,14 @@ const Wrapper = styled.article`
 
   .project-imgs {
     position: relative;
-    border: 0.25rem solid var(--clr-primary-3);
     border-radius: var(--radius);
     overflow: hidden;
     background-color: var(--clr-primary-8);
+    box-shadow: var(--dark-shadow);
 
     &:hover {
       .thumb {
-        opacity: 0.5;
+        filter: blur(0.2rem);
       }
       .link {
         opacity: 1;
@@ -94,19 +94,20 @@ const Wrapper = styled.article`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: var(--clr-primary-5);
+    background-color: var(--clr-accent-3);
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.6rem;
+    height: 2.6rem;
     border-radius: 50%;
     border: none;
     transition: var(--transition);
     opacity: 0;
     cursor: pointer;
+
     svg {
-      font-size: 1.25rem;
+      font-size: 1.5rem;
       color: var(--clr-white);
     }
   }
@@ -118,7 +119,7 @@ const Wrapper = styled.article`
   .item-info header {
     display: flex;
     justify-content: space-between;
-    border-bottom: 0.5px dotted var(--clr-primary-1);
+    border-bottom: 1px solid var(--clr-primary-1);
   }
   .item-info h4 {
     font-size: 1rem;
@@ -133,6 +134,8 @@ const Wrapper = styled.article`
     word-wrap: break-word;
     margin-bottom: 0;
     padding-top: 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
     -webkit-line-clamp: ${(props) => (props.expandable ? "6" : "2")};
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -144,7 +147,7 @@ const Wrapper = styled.article`
     padding: 0;
     font-size: 0.775rem;
     font-weight: 600;
-    text-transform: none;
+    text-transform: capitalize;
   }
 
   @media screen and (min-width: 768px) {
@@ -161,7 +164,7 @@ const Wrapper = styled.article`
     height: 300px;
 
     .item-desc {
-      width: 380px;
+      max-width: 330px;
     }
   }
 

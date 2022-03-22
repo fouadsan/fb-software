@@ -44,7 +44,7 @@ function References() {
       <Element name="projects">
         <Wrapper className="page-100">
           <div className="title">
-            <h2>Some Projects</h2>
+            <h2>Selected Projects</h2>
             <div className="underline"></div>
           </div>
           <Categories filterItems={filterItems} />

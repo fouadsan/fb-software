@@ -22,7 +22,7 @@ function ImageViewer({ images, onClose }) {
   };
 
   return (
-    <Wrapper className="">
+    <Wrapper>
       <div className="close">
         <button type="button" className="close-btn" onClick={onClose}>
           <FaTimes />
@@ -78,7 +78,7 @@ const Wrapper = styled.div`
   .close {
     position: fixed;
     top: 1rem;
-    right: 1rem;
+    right: 0.5rem;
     display: flex;
     justify-content: flex-end;
     width: 100%;
@@ -86,6 +86,7 @@ const Wrapper = styled.div`
 
   .close-btn {
     z-index: 4;
+    font-size: 1rem;
   }
 
   .container {
@@ -115,7 +116,17 @@ const Wrapper = styled.div`
   @media screen and (min-width: 768px) {
     .container {
       width: 50%;
-      height: 90%;
+      height: 100%;
+    }
+
+    .close {
+      right: 1rem;
+    }
+
+    .close-btn {
+      svg {
+        font-size: 2rem;
+      }
     }
   }
 `;
@@ -124,7 +135,8 @@ const Image = styled.img`
   display: ${(props) => (props.show ? "inline" : "none")};
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  max-height: 100vh;
+  object-position: 100% 100%;
   }
 `;
 
