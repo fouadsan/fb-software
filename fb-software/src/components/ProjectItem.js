@@ -1,11 +1,20 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { FaEye } from "react-icons/fa";
+import { FaEye, FaGithub, FaLink } from "react-icons/fa";
 
 import Thumbnail from "./Thumbnail";
+
 import ImageViewer from "./ImageViewer";
 
-function ProjectItem({ title, category, thumb, images, description }) {
+function ProjectItem({
+  title,
+  category,
+  thumb,
+  images,
+  description,
+  repoLink,
+  directLink,
+}) {
   const [isViewerOpen, setIsViewerOpen] = useState(false);
   const [projectImages, setProjectImages] = useState([]);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -26,13 +35,41 @@ function ProjectItem({ title, category, thumb, images, description }) {
     <Wrapper className="menu-item" expandable={isExpanded}>
       <div className="project-imgs">
         <Thumbnail imageUrl={thumb} />
-        <button
-          type="button"
-          className="link"
-          onClick={() => openImageViewer(images)}
-        >
-          <FaEye />
-        </button>
+        <div className="project-options">
+          <button
+            type="button"
+            className="link"
+            onClick={() => openImageViewer(images)}
+            title={"open in image viewer"}
+          >
+            <FaEye />
+          </button>
+
+          {repoLink && (
+            <a
+              href={repoLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link"
+              onClick={() => {}}
+              title={"source code"}
+            >
+              <FaGithub />
+            </a>
+          )}
+          {directLink && (
+            <a
+              href={directLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link"
+              onClick={() => {}}
+              title={"live"}
+            >
+              <FaLink />
+            </a>
+          )}
+        </div>
         {isViewerOpen && (
           <ImageViewer
             images={projectImages}
@@ -89,17 +126,26 @@ const Wrapper = styled.article`
     }
   }
 
-  .link {
+  .project-options {
     position: absolute;
     top: 50%;
     left: 50%;
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem;
+
     transform: translate(-50%, -50%);
+  }
+
+  .link {
     background-color: var(--clr-accent-3);
     display: flex;
     align-items: center;
     justify-content: center;
     width: 2.6rem;
     height: 2.6rem;
+    padding: 0.2rem;
+    margin-right: 0.5rem;
     border-radius: 50%;
     border: none;
     transition: var(--transition);

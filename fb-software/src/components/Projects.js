@@ -7,7 +7,16 @@ function Projects({ items }) {
   return (
     <Wrapper className="section-center">
       {items.map((menuItem) => {
-        const { id, title, category, thumb, images, description } = menuItem;
+        const {
+          id,
+          title,
+          category,
+          thumb,
+          images,
+          description,
+          repo_link,
+          direct_link,
+        } = menuItem;
         return (
           <ProjectItem
             key={id}
@@ -16,6 +25,8 @@ function Projects({ items }) {
             thumb={thumb}
             images={images}
             description={description}
+            repoLink={repo_link}
+            directLink={direct_link}
           />
         );
       })}
