@@ -74,6 +74,9 @@ export const AppProvider = ({ children }) => {
       });
 
       if (coll === "references") {
+        items.sort(function (a, b) {
+          return a.timestamp - b.timestamp;
+        });
         const allCategories = [
           "all",
           ...new Set(items.map((items) => items.category)),
