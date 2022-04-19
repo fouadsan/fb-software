@@ -1,23 +1,5 @@
 # game_watch
-My Personal Website/Portfolio with React JS & Firebase
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+My Personal Website/Portfolio with React JS & Firebase.
 
 
 
